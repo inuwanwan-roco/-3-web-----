@@ -33,13 +33,13 @@ function renderCart() {
 
     cartList.innerHTML = "";
     if (cart.length === 0) {
-      cartList.innerHTML = createEmptyCart();
+        cartList.innerHTML = createEmptyCart();
     } else {
 
-      cart.forEach((item) => {
-          cartList.innerHTML +=
+        cart.forEach((item) => {
+            cartList.innerHTML +=
             createCartCard(item);
-      });
+        });
     }
     updateSummary(cart);
 }
@@ -51,38 +51,38 @@ function renderCart() {
 function createCartCard(item) {
     return `
         <article class="p-cart-card">
-          <div class="p-cart-card__image">
-            <img src="${item.image}"
-                  alt="${item.name}">
-          </div>
-          <div class="p-cart-card__body">
-            <h3 class="p-cart-card__title">
-                ${item.name}
-            </h3>
-            ${
-                item.optionName
-                  ? `
-                <p class="p-cart-card__option">
-                  ${item.optionName}：
-                  ${item.optionValue}
-                </p>
-                    `
-                  : ""
-              }
-              <p class="p-cart-card__price">
-                  ¥${item.price.toLocaleString()}
-              </p>
-              <div class="p-cart-card__quantity">
+            <div class="p-cart-card__image">
+                <img src="${item.image}"
+                    alt="${item.name}">
+            </div>
+            <div class="p-cart-card__body">
+                <h3 class="p-cart-card__title">
+                    ${item.name}
+                </h3>
+                ${
+                    item.optionName
+                        ? `
+                    <p class="p-cart-card__option">
+                        ${item.optionName}：
+                        ${item.optionValue}
+                    </p>
+                        `
+                        : ""
+                }
+            <p class="p-cart-card__price">
+                ¥${item.price.toLocaleString()}
+            </p>
+            <div class="p-cart-card__quantity">
                 <button
-                  class="p-cart-card__quantity-btn"
-                  data-action="decrease"
-                  data-id="${item.id}"
-                  data-option-name="${item.optionName}"
-                  data-option="${item.optionValue}">
-                  −
+                    class="p-cart-card__quantity-btn"
+                    data-action="decrease"
+                    data-id="${item.id}"
+                    data-option-name="${item.optionName}"
+                    data-option="${item.optionValue}">
+                    −
                 </button>
                 <span class="p-cart-card__quantity-value">
-                  ${item.quantity}
+                    ${item.quantity}
                 </span>
                 <button
                     class="p-cart-card__quantity-btn"
@@ -92,17 +92,17 @@ function createCartCard(item) {
                     data-option="${item.optionValue}">
                     ＋
                 </button>
-              </div>
-          </div>
-          <button
+            </div>
+        </div>
+        <button
             class="p-cart-card__remove"
             data-id="${item.id}"
             data-option-name="${item.optionName}"
             data-option="${item.optionValue}">
             <i class="fa-solid fa-trash"></i>
-          </button>
+        </button>
         </article>
-      `;
+    `;
 }
 
 // ------------------------------------------
@@ -113,7 +113,7 @@ function createEmptyCart() {
     return `
         <div class="p-cart-empty">
             <i class="fa-solid fa-bag-shopping
-                      p-cart-empty__icon"></i>
+                    p-cart-empty__icon"></i>
             <h3 class="p-cart-empty__title">
                 Your cart is empty
             </h3>
@@ -127,7 +127,7 @@ function createEmptyCart() {
                 商品一覧を見る
             </a>
         </div>
-      `;
+    `;
 }
 
 // ------------------------------------------
@@ -143,14 +143,26 @@ function updateSummary(cart) {
         return total + item.price * item.quantity;
     }, 0);
 
+    const shipping = totalPrice >= 5000 ? 0 : 550;
+
     document.getElementById("cart-count").textContent =
         `${totalQuantity}点`;
 
     document.getElementById("cart-subtotal").textContent =
         `¥${totalPrice.toLocaleString()}`;
 
+    document.getElementById("cart-shipping").textContent =
+        shipping === 0
+            ? "無料"
+            : `¥${shipping.toLocaleString()}`;
+
+    document.getElementById("cart-shipping-message").textContent =
+        shipping === 0
+            ? "送料無料"
+            : "5,000円以上のお買い上げで送料無料";
+
     document.getElementById("cart-total").textContent =
-        `¥${totalPrice.toLocaleString()}`;
+        `¥${(totalPrice + shipping).toLocaleString()}`;
 
 }
 
@@ -189,7 +201,7 @@ function updateQuantity(id, optionName, optionValue, action) {
 // Quantity Button
 // ------------------------------------------
 
-  document.addEventListener("click", (event) => {
+document.addEventListener("click", (event) => {
     const quantityButton = event.target.closest(
         ".p-cart-card__quantity-btn"
     );

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="MI/NUITのチェックアウトページです">
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Noto+Serif+JP:wght@200..900&display=swap" 
+                rel="stylesheet">
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">       
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/checkout.css">
+        <title>Checkout| MI/NUIT</title>
+    </head>
+    <body>
+        <header class="header">
+            <!-- header共通 -->
+        </header>
+        <main>
+            <!-- ==========================================
+                Page Header
+            ========================================== -->
+            <section class="c-page-header">
+                <div class="l-container">
+                    <h1 class="c-page-header__title">
+                        Checkout
+                    </h1>
+                </div>
+            </section>
+            <!-- ==========================================
+                Breadcrumb
+            ========================================== -->
+            <nav class="c-breadcrumb"aria-label="パンくずリスト">
+                <div class="l-container">
+                    <ol class="c-breadcrumb__list">
+                        <li class="c-breadcrumb__item">
+                            <a href="index.html">
+                                Home
+                            </a>
+                        </li>
+                        <li class="c-breadcrumb__item">
+                            <a href="cart.html">
+                                Cart
+                            </a>
+                        </li>
+                        <li class="c-breadcrumb__item"aria-current="page">
+                            Checkout
+                        </li>
+                    </ol>
+                </div>
+            </nav>
+            <!-- ==========================================
+            Checkout
+            ========================================== -->
+            <section class="p-checkout">
+                <div class="l-container">
+                    <div class="p-checkout__layout">
+                        <!-- Checkout Form -->
+                        <div class="p-checkout__form">
+                            <section class="p-checkout-section">
+                                <h2 class="p-checkout-section__title">
+                                    Customer Information
+                                </h2>
+                                <div class="p-checkout-section__body">
+                                    <div class="p-form-group">
+                                        <label
+                                            for="customer-name"
+                                            class="p-form-group__label">
+                                            お名前
+                                            <span class="p-form-group__required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <input
+                                            id="customer-name"
+                                            class="p-form-group__input"
+                                            type="text"
+                                            autocomplete="name"
+                                            required>
+                                    </div>
+                                    <div class="p-form-group">
+                                        <label
+                                            for="customer-kana"
+                                            class="p-form-group__label">
+                                            フリガナ
+                                            <span class="p-form-group__required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <input
+                                            id="customer-kana"
+                                            class="p-form-group__input"
+                                            type="text"
+                                            autocomplete="off"
+                                            required>
+                                    </div>
+                                    <div class="p-form-group">
+                                        <label
+                                            for="customer-email"
+                                            class="p-form-group__label">
+                                            メールアドレス
+                                            <span class="p-form-group__required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <input
+                                            id="customer-email"
+                                            class="p-form-group__input"
+                                            type="email"
+                                            autocomplete="email"
+                                            required>
+                                    </div>
+                                    <div class="p-form-group">
+                                        <label
+                                            for="customer-phone"
+                                            class="p-form-group__label">
+                                            電話番号
+                                            <span class="p-form-group__required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <input
+                                            id="customer-phone"
+                                            class="p-form-group__input"
+                                            type="tel"
+                                            autocomplete="tel"
+                                            required>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="p-checkout-section">
+                                <h2 class="p-checkout-section__title">
+                                    Shipping Address
+                                </h2>
+                                <div class="p-checkout-section__body">
+                                    <!-- Postal Code -->
+                                    <div class="p-form-group">
+                                        <label
+                                            for="postal-code"
+                                            class="p-form-group__label">
+                                            郵便番号
+                                            <span class="p-form-group__required">*</span>
+                                        </label>
+                                        <input
+                                            id="postal-code"
+                                            class="p-form-group__input"
+                                            type="text"
+                                            inputmode="numeric"
+                                            autocomplete="postal-code"
+                                            placeholder="例）0600001"
+                                            required>
+                                    </div>
+                                    <!-- Prefecture -->
+                                    <div class="p-form-group">
+                                        <label
+                                            for="prefecture"
+                                            class="p-form-group__label">
+                                            都道府県
+                                            <span class="p-form-group__required">*</span>
+                                        </label>
+                                        <select
+                                            id="prefecture"
+                                            class="p-form-group__select"
+                                            required>
+                                            <option value="">
+                                                選択してください
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- City -->
+                                    <div class="p-form-group">
+                                        <label
+                                            for="city"
+                                            class="p-form-group__label">
+                                            市区町村
+                                            <span class="p-form-group__required">*</span>
+                                        </label>
+                                        <input
+                                            id="city"
+                                            class="p-form-group__input"
+                                            type="text"
+                                            autocomplete="address-level2"
+                                            required>
+                                    </div>
+                                    <!-- Street -->
+                                    <div class="p-form-group">
+                                        <label
+                                            for="street"
+                                            class="p-form-group__label">
+                                            番地
+                                            <span class="p-form-group__required">*</span>
+                                        </label>
+                                        <input
+                                            id="street"
+                                            class="p-form-group__input"
+                                            type="text"
+                                            autocomplete="address-line1"
+                                            required>
+                                    </div>
+                                    <!-- Building -->
+                                    <div class="p-form-group">
+                                        <label
+                                            for="building"
+                                            class="p-form-group__label">
+                                            建物名・部屋番号
+                                        </label>
+                                        <input
+                                            id="building"
+                                            class="p-form-group__input"
+                                            type="text"
+                                            autocomplete="address-line2">
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="p-checkout-section">
+                                <h2 class="p-checkout-section__title">
+                                    Payment Method
+                                </h2>
+                                <div class="p-checkout-section__body">
+                                    <fieldset class="p-payment">
+                                        <legend class="u-visually-hidden">
+                                            支払い方法
+                                        </legend>
+                                        <!-- Credit Card -->
+                                        <label class="p-payment__item">
+                                            <input
+                                                type="radio"
+                                                name="payment"
+                                                value="credit"
+                                                checked>
+                                            <span class="p-payment__label">
+                                                クレジットカード
+                                            </span>
+                                            <span class="p-payment__fee">
+                                                手数料無料
+                                            </span>
+                                        </label>
+                                        <!-- PayPay -->
+                                        <label class="p-payment__item">
+                                            <input
+                                                type="radio"
+                                                name="payment"
+                                                value="paypay">
+                                            <span class="p-payment__label">
+                                                PayPay
+                                            </span>
+                                            <span class="p-payment__fee">
+                                                手数料無料
+                                            </span>
+                                        </label>
+                                        <!-- Convenience Store -->
+                                        <label class="p-payment__item">
+                                            <input
+                                                type="radio"
+                                                name="payment"
+                                                value="convenience">
+                                            <span class="p-payment__label">
+                                                コンビニ払い
+                                            </span>
+                                            <span class="p-payment__fee">
+                                                手数料 ¥220
+                                            </span>
+                                        </label>
+                                        <!-- Cash on Delivery -->
+                                        <label class="p-payment__item">
+                                            <input
+                                                type="radio"
+                                                name="payment"
+                                                value="cod">
+                                            <span class="p-payment__label">
+                                                代金引換
+                                            </span>
+                                            <span class="p-payment__fee">
+                                                手数料 ¥330
+                                            </span>
+                                        </label>
+                                    </fieldset>
+                                </div>
+                            </section>
+                        </div>
+                        <!-- Order Summary -->
+                        <aside class="p-checkout__summary">
+                            <div class="p-summary">
+                                <h2 class="p-summary__title">
+                                    Order Summary
+                                </h2>
+                                <!-- 商品一覧 -->
+                                <div class="p-summary__products">
+                                    <!-- JavaScriptで生成 -->
+                                </div>
+                                <!-- 合計情報 -->
+                                <dl class="p-summary__list">
+                                    <div class="p-summary__row">
+                                        <dt>商品数</dt>
+                                        <dd id="checkout-count">
+                                            0点
+                                        </dd>
+                                    </div>
+                                    <div class="p-summary__row">
+                                        <dt>小計</dt>
+                                        <dd id="checkout-subtotal">
+                                            ¥0
+                                        </dd>
+                                    </div>
+                                    <div class="p-summary__row">
+                                        <dt>送料</dt>
+                                        <dd id="checkout-shipping">
+                                            ¥550
+                                        </dd>
+                                    </div>
+                                    <div class="p-summary__row">
+                                        <dt>支払手数料</dt>
+                                        <dd id="checkout-fee">
+                                            ¥0
+                                        </dd>
+                                    </div>
+                                </dl>
+                                <!-- 送料無料案内 -->
+                                <p class="p-summary__shipping-message"
+                                    id="checkout-shipping-message">
+                                    5,000円以上のお買い上げで送料無料
+                                </p>
+                                <!-- Total -->
+                                <div class="p-summary__total">
+                                    <span>
+                                        合計
+                                    </span>
+                                    <strong id="checkout-total">
+                                        ¥0
+                                    </strong>
+                                </div>
+                                <button
+                                    class="c-button
+                                            c-button--primary
+                                            c-button--block">
+                                    ご注文を確定する
+                                </button>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer class="footer">
+            <!-- footer共通 -->
+        </footer>
+        <script src="js/main.js"></script>
+        <script src="js/checkout.js"></script>
+    </body>
+</html>

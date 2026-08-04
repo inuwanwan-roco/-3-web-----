@@ -161,6 +161,15 @@
     font-weight: 700;
 }
 
+.p-cart__shipping-message{
+    margin: var(--space-5) 0;
+    padding-top: var(--space-4);
+    border-top: 1px solid rgba(0,0,0,.08);
+    color: var(--color-text-light);
+    font-size: .9rem;
+    text-align: center;
+}
+
 /* ==========================================
 04.Cart Actions
 ========================================== */
@@ -204,6 +213,7 @@
     color: var(--color-text-light);
     line-height: 1.8;
 }
+
 /* ==========================================
 06.Responsive
 ========================================== */
@@ -224,5 +234,5 @@
 
     .p-cart-card__remove{
         justify-self:center;
-      }
+    }
 }
