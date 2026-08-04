@@ -1,0 +1,846 @@
+@charset "UTF-8";
+
+/* TOP PAGE 
+Architecture : FLOCSS + BEM */
+
+/* ==================================================
+    01. Header
+================================================== */
+.l-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-modal);
+    transition:
+        background var(--transition-base),
+        backdrop-filter var(--transition-base),
+        box-shadow var(--transition-base);
+}
+
+.l-header.is-scrolled{
+    background: var(--color-header-scrolled);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: var(--header-shadow-scrolled);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.l-header__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: var(--header-height);
+}
+
+.l-header__logo a{
+    color: var(--color-white);
+    font-family: var(--font-title);
+    font-size: 2.7rem;
+    letter-spacing: .1em;
+    transition: var(--transition);
+}
+
+.l-header__logo a:hover{
+    color: var(--color-primary);
+}
+
+.l-header__nav{
+    display: flex;
+    align-items: center;
+}
+
+.l-header__menu{
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+}
+
+.l-header__link{
+    position: relative;
+    color: var(--color-white);
+    font-size: 1rem;
+    letter-spacing: .08em;
+    transition: var(--transition);
+}
+
+.l-header__link::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: var(--transition);
+}
+
+.l-header__link:hover{
+    color: var(--color-primary);
+}
+
+.l-header__link:hover::after{
+    width: 100%;
+}
+
+.l-header__actions{
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* ==================================================
+    02. Hero
+================================================== */
+
+.p-hero{
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    z-index: var(--z-base);
+    overflow: visible;
+}
+
+.p-hero__image{
+    position: absolute;
+    display: block;
+    user-select: none;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes heroZoom{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.08);
+    }
+}
+
+.p-hero__gradient{
+    position: absolute;
+    inset: 0;
+    background:radial-gradient(circle at 70% 30%, rgba(109,194,255,.18),transparent 60%);
+    pointer-events: none;
+    z-index: var( --z-sub);
+}
+
+/* Noise（写真にフィルターみたいなやつをかける必要になったら追加）  
+.hero__noise{
+    position: absolute;
+    inset: 0;
+    opacity: .04;
+    background-image:
+        url("../images/common/noise.webp");
+    pointer-events: none;
+    z-index: 3;
+}
+*/
+
+.p-hero__inner{
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    z-index: var(--z-content);
+}
+
+.p-hero__content{
+    max-width: 720px;
+}
+
+/* Hero Copy */
+.p-hero__copy-small{
+    margin-top: 72px;
+    color: var(--color-primary-light);
+    font-size: 1.3rem;
+    letter-spacing: .1em;
+}
+
+.p-hero__title{
+    margin-bottom: var(--space-5);
+    color: var(--color-white);
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 3vw, 4rem);
+    line-height: 1.4;
+    text-shadow: var(--text-shadow1)
+}
+
+.p-hero__title span{
+    color: var(--color-primary-light);
+}
+
+.p-hero__en{
+    margin-bottom: var(--space-2);
+    color: var(--color-custom);
+    text-shadow: var(--text-shadow2);
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    letter-spacing: .15em;
+}
+
+.p-hero__subtitle{
+    margin-bottom: var(--space-4);
+    color: var(--color-primary-light);
+    font-size: 1rem;
+}
+
+.p-hero__text{
+    max-width: 520px;
+    margin-bottom: var(--space-6);
+    color: var(--color-white);
+    line-height: 2;
+}
+
+.p-hero__buttons{
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+/* Scroll */
+.p-hero__scroll{
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    z-index: var(--z-decoration);
+}
+
+.p-hero__scroll-text{
+    color: var(--color-white);
+    font-size: .75rem;
+    letter-spacing: .3em;
+}
+
+.p-hero__scroll-line{
+    width: 1px;
+    height: 72px;
+    background: rgba(255,255,255,.4);
+    overflow: hidden;
+}
+
+.p-hero__scroll-line::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 30%;
+    background: var(--color-primary);
+    animation: scrollLine 2s infinite;
+}
+
+@keyframes scrollLine{
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(350%);
+    }
+}
+
+/* ==================================================
+    03. Brand
+================================================== */
+
+.p-brand{
+    position: relative;
+    margin-top: -130px;
+    padding-top: 250px;
+    z-index: var(--z-sub);
+}
+
+/* Content*/
+.p-brand__content{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    gap: clamp(48px,6vw,96px);
+}
+
+/*  Image */
+.p-brand__image{
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+}
+
+.p-brand__image img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: 
+        transform var(--duration-fast) var(--ease-base);
+}
+
+.p-brand__image:hover img{
+    transform: scale(1.05);
+}
+
+/* Text*/
+.p-brand__text{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.p-brand__heading{
+    font-family: var(--font-title);
+    font-size: clamp(2rem,3vw,4rem);
+    color: var(--color-primary);
+    font-weight: bold;
+    text-shadow: var(--text-shadow2);
+    margin-bottom: var(--space-2);
+    line-height: 1.4;
+}
+
+.p-brand__text p{
+    color: var(--color-text);
+    line-height: 2;
+}
+
+.p-brand__text p+p{
+    margin-top: var(--space-3);
+}
+
+.p-brand .c-button{
+    margin-top: var(--space-5);
+    width: fit-content;
+}
+
+.p-brand .c-section-heading{
+    align-items: center;
+}
+
+.p-brand .c-section-description{
+    max-width: 500px;
+}
+
+/* ==================================================
+    04. Products
+================================================== */
+
+.p-products__grid{
+    display: grid;
+    grid-template-columns:
+        1.4fr
+        .9fr
+        .9fr
+        1fr
+        1.4fr;
+    grid-template-areas:
+    "cleansing toner emulsion primer liquid"
+    "cleansing mask mask primer liquid"
+    "special special special cushion powder";
+    gap: var(--space-3);
+    /* align-items: stretch; */
+}
+
+.p-product-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    min-height: 220px;
+    text-decoration: none;
+    color: var(--color-white);
+    border-radius: var( --radius-xl);
+    overflow: hidden;
+    background: var(--color-border);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(14px);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+    /* GSAP初期状態 */
+    opacity: 1;
+    will-change: transform, opacity;
+}
+
+.p-product-card:hover{
+    transform: translateY(-18px);
+    box-shadow: var(--box-shadow1)
+}
+
+.p-product-card--cleansing{
+    grid-area: cleansing;
+}
+
+.p-product-card--toner{
+    grid-area: toner;
+}
+
+.p-product-card--emulsion{
+    grid-area: emulsion;
+}
+
+.p-product-card--primer{
+    grid-area: primer;
+}
+
+.p-product-card--liquid{
+    grid-area: liquid;
+    min-height: 520px;
+}
+
+.p-product-card--mask{
+    grid-area: mask;
+}
+
+.p-product-card--special{
+    grid-area: special;
+    min-height: 320px;
+}
+
+.p-product-card--cushion{
+    grid-area: cushion;
+}
+
+.p-product-card--powder{
+    grid-area: powder;
+}
+
+.p-product-card__image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    /* transform:translateZ(40px); */
+}
+
+.p-product-card__image img{
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    object-fit: contain;
+    transition: transform var(--duration-fast1) var(--ease-base),
+                filter var(--duration-fast1) var(--ease-base);
+}
+
+.p-product-card:hover .p-product-card__image img{
+    transform: scale(1.05);
+    filter: brightness(1.08);
+}
+
+.p-product-card__image--double{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.p-product-card--cleansing img{
+    max-width: 240px;
+}
+
+.p-product-card--liquid img{
+    max-width: 240px;
+}
+
+.p-product-card--special img{
+    max-width: 180px;
+}
+
+.p-product-card--powder img{
+    max-width: 140px;
+}
+
+.p-product-card__content{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.p-product-card h3{
+    font-size: 1.2rem;
+    font-weight: 600;
+    /* transform:translateZ(20px); */
+}
+
+.p-product-card span{
+    font-size: .8rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    opacity: .7;
+    color: rgba(255,255,255,.65);
+    letter-spacing: .18em;
+    font-size: .75rem;
+}
+
+
+/* ==================================================
+    05. Special Care
+================================================== */
+
+.p-special-care .c-section-description{
+    color: var(--color-text-light);
+}
+
+.p-special-care .c-section-subtitle{
+    color: var(--color-primary);
+}
+
+.p-special-care{
+    position: relative;
+    overflow: hidden;
+}
+
+.p-special-care__content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.p-special-care__image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-special-care__image img{
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,.15));
+    transition: transform var(--transition-slow);
+}
+
+.p-special-care__image:hover img{
+    transform: translateY(-8px) scale(1.02);
+}
+
+.p-special-care__text{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    max-width: 460px;
+    justify-self: center;
+}
+
+.p-special-care__label{
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: 1rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+}
+
+.p-special-care__title{
+    color: var(--color-primary-dark);
+    font-size: clamp(2.5rem, 3.5vw, 4rem);
+    font-weight: bold;
+    letter-spacing: .03em;
+    line-height: 1.15;
+    text-shadow:
+        0 8px 4px rgba(94, 121, 162, 0.849),
+        0 4px 10px rgba(255, 255, 254, 0.803);
+}
+
+.p-special-care__description{
+    color: var(--color-text);
+    font-size: 1.2rem;
+    line-height: 2.1;
+}
+
+.p-special-care__features{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    color: var(--color-text);
+    font-size: 1.1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.p-special-care__features li{
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.p-special-care__features li::before{
+    content:"✦";
+    color:var(--color-primary);
+    margin-right:.5rem;
+}
+
+/* ==================================================
+    06. News
+================================================== */
+.p-news {
+    padding: 120px 0;
+}
+
+.p-news__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-top: 60px;
+}
+
+.p-news-card {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    background: var(--color-white);
+    border-radius: var(--radius-l);
+    box-shadow: var(--box-shadow2);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.p-news-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--box-shadow3);
+}
+
+.p-news-card__category {
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 18px;
+    padding: 6px 12px;
+    background: transparent;
+    border-bottom: solid 1px var(--color-black);
+    color: var(--color-primary);
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+}
+
+.p-news-card__date {
+    margin-bottom: 14px;
+    color: #8d8d8d;
+    font-size: 1rem;
+    letter-spacing: .05em;
+}
+
+.p-news-card__title {
+    margin-bottom: 18px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+.p-news-card__text {
+    flex-grow: 1;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.9;
+}
+
+.p-news__button {
+    margin-top: 56px;
+    text-align: center;
+}
+
+/* ==================================================
+    07. Contact
+================================================== */
+.p-contact{
+    padding: 140px 0;
+    text-align: center;
+}
+
+.p-contact__content{
+    max-width: 720px;
+    margin: 60px auto 0;
+}
+
+.p-contact__lead{
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    text-shadow: var(--text-shadow3);
+    color: var(--color-text);
+    font-family: var(--font-title);
+}
+
+.p-contact__sub{
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--color-text-light);
+    letter-spacing: .05em;
+    margin-bottom: 48px;
+}
+
+/* 日本語翻訳のアニメーション */
+.p-contact__lead,
+.p-contact__sub{
+    position: relative;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.p-contact__lead{
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.p-contact__sub{
+    height: 28px;
+    margin-bottom: 48px;
+    font-family: var(--font-title);
+}
+
+/* 共通 */
+.p-contact__lead span,
+.p-contact__sub span{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: max-content;
+    transition:
+        opacity var(--duration-slow) var(--ease-base),
+        transform var(--duration-slow) var(--ease-base);
+}
+
+/* ---------- English ---------- */
+.p-contact__lead-en,
+.p-contact__sub-en{
+    opacity: 1;
+}
+
+/* ---------- Japanese ---------- */
+.p-contact__lead-ja,
+.p-contact__sub-ja{
+    opacity: 0;
+    transform: translate(-50%,8px);
+}
+
+/* マウスホバー時 */
+.p-contact__content:hover .p-contact__lead-en,
+.p-contact__content:hover .p-contact__sub-en{
+    opacity:0;
+    transform:translate(-50%,-8px);
+}
+
+.p-contact__content:hover .p-contact__lead-ja,
+.p-contact__content:hover .p-contact__sub-ja{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+.p-contact__text{
+    margin-bottom:56px;
+    font-size:1.5rem;
+    line-height:2.2;
+    color:var(--color-text);
+}
+
+.p-contact__button{
+    display: flex;
+    justify-content: center;
+}
+
+/* ==================================================
+    08. Footer
+================================================== */
+.p-footer{
+    padding: 100px 8% 60px;
+}
+
+.p-footer__top{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--space-28);
+    margin-bottom: 80px;
+}
+
+.p-footer__nav ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.p-footer__nav li+li{
+    margin-top: 18px;
+}
+
+.p-footer__nav a{
+    color: var(--color-white);
+    font-size: 1rem;
+    letter-spacing: .08em;
+    line-height: 2.2;
+    text-decoration: none;
+}
+
+.p-footer__brand{
+    text-align: center;
+    padding-top: 60px;
+    margin-top: 70px;
+    border-top: 1px dotted var(--color-border);
+}
+
+.p-footer__sns{
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    margin: 36px 0 24px;
+}
+
+.p-footer__sns a{
+    color: var(--color-white);
+    font-size: 1.5rem;
+}
+
+.p-footer__copy{
+    color: var(--color-white);
+    font-size: .8rem;
+    letter-spacing: .08em;
+}
+
+/* --------------------------
+Footer Cat animation
+--------------------------- */
+.p-footer__cat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 28px 0 12px;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+#footer-cat{
+    width: 120px;
+    height: 120px;
+}
+
+.p-footer__message{
+    margin-bottom: 40px;
+    font-family: var(--font-title);
+    font-size: .95rem;
+    letter-spacing: .15em;
+    text-align: center;
+    color: var(--color-white);
+    font-style: italic;
+}
+
+@media screen and (max-width:768px){
+    #footer-cat{
+        width: 100px;
+        height: 100px;
+    }
+    .p-footer__message{
+        font-size: .85rem;
+        margin-bottom: 30px;
+    }
+}
+
+/* ==================================================
+    09. Responsive
+================================================== */

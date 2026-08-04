@@ -1,0 +1,182 @@
+@charset "UTF-8";
+
+/* ==========================================
+01.Cart Layout
+========================================== */
+
+.p-cart{ 
+    padding: var(--space-8) 0;
+}
+
+.p-cart__layout{
+    display: grid;
+    grid-template-columns: minmax(0,2fr) 360px;
+    gap: var(--space-6);
+    align-items: start;
+}
+
+/* ==========================================
+02.Cart Items
+========================================== */
+
+.p-cart__title{
+    margin-bottom: var(--space-4);
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: 2rem;
+}
+
+.p-cart__list{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.p-cart-card{
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: var(--space-4);
+    align-items: center;
+    padding: var(--space-4);
+    background: rgba(255,255,255,.88);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+}
+
+.p-cart-card__image{
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: var(--radius-m);
+    background: var(--color-background);
+}
+
+.p-cart-card__image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.p-cart-card__body{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.p-cart-card__title{
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+}
+
+.p-cart-card__option{
+    color: var(--color-text-light);
+    font-size: .95rem;
+}
+
+.p-cart-card__price{
+    color: var(--color-text);
+    font-weight: 700;
+}
+
+.p-cart-card__quantity{
+    color: var(--color-text-light);
+    font-size: .95rem;
+}
+
+.p-cart-card__remove{
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    color: var(--color-text-light);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.p-cart-card__remove:hover{
+    color: #d33;
+    background: #ffeaea;
+}
+
+/* ==========================================
+03.Cart Summary
+========================================== */
+
+.p-cart__summary{
+    position: sticky;
+    top: 120px;
+    padding: var(--space-5);
+    background: rgba(255,255,255,.88);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(12px);
+}
+
+.p-cart__summary-title{
+    margin-bottom: var(--space-4);
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+}
+
+.p-cart__summary-list{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.p-cart__summary-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.p-cart__summary-row--total{
+    padding-top: var(--space-3);
+    margin-top: var(--space-3);
+    border-top: 1px solid rgba(0,0,0,.12);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* ==========================================
+04.Cart Actions
+========================================== */
+
+.p-cart__actions{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+}
+
+/* ==========================================
+05.Empty Cart
+========================================== */
+
+
+
+
+/* ==========================================
+06.Responsive
+========================================== */
+
+@media screen and (max-width:768px){
+    .p-cart__layout{
+        grid-template-columns: 1fr;
+    }
+
+    .p-cart__summary{
+        position: static;
+    }
+
+    .p-cart-card{
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .p-cart-card__remove{
+        justify-self:center;
+      }
+}

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="MI/NUITの商品一覧ページです。">
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Noto+Serif+JP:wght@200..900&display=swap" 
+                rel="stylesheet">
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">       
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/products.css">
+        <title>Products | MI/NUIT</title>
+    </head>
+    <body>
+        <header class="l-header">
+            <div class="l-container">
+                <div class="l-header__inner">
+                    <!-- Logo -->
+                    <h1 class="l-header__logo">
+                        <a href="index.html">MI/NUIT</a>
+                    </h1>
+                    <!-- Navigation -->
+                    <nav class="l-header__nav">
+                        <ul class="l-header__menu">
+                            <li class="l-header__item">
+                                <a href="#brand" class="l-header__link">
+                                    Brand
+                                </a>
+                            </li>
+                            <li class="l-header__item">
+                                <a href="#special-care" class="l-header__link">
+                                    Special Care
+                                </a>
+                            </li>
+                            <li class="l-header__item">
+                                <a href="#news" class="l-header__link">
+                                    News
+                                </a>
+                            </li>
+                            <li class="l-header__item">
+                                <a href="contact.html" class="l-header__link">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- Button Area -->
+                    <div class="l-header__actions">
+                        <a href="products.html"class="c-button c-button--primary">
+                            SHOP
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="p-products-page">
+            <div class="l-container">
+                <nav class="c-breadcrumb" aria-label="パンくずリスト">
+                    <ol class="c-breadcrumb__list">
+                        <li><a href="index.html">HOME</a></li>
+                        <li aria-current="page">Products</li>
+                    </ol>
+                </nav>
+                <section class="c-page-header">
+                    <p class="c-page-header__heading">
+                        PRODUCT COLLECTION
+                    </p>
+                    <h1 class="c-page-header__text">
+                        Products
+                    </h1>
+                    <p class="c-page-header__description">
+                        Discover skincare and makeup inspired by the quiet beauty of midnight.
+                    </p>
+                </section>
+                <div class="p-products-page__layout">
+                    <!-- Sidebar -->
+                    <aside class="p-products-sidebar">
+                        <h2 class="p-products-sidebar__title"> 
+                            CATEGORY
+                        </h2>
+                        <nav class="p-products-sidebar__nav">
+                            <ul class="p-products-sidebar__list">
+                                <li class="p-products-sidebar__group">
+                                    <button class="p-products-sidebar__button">
+                                        Skincare
+                                    </button>
+                                    <ul class="p-products-sidebar__submenu">
+                                        <li><a href="#cleansing">Cleansing</a></li>
+                                        <li><a href="#toner">Toner</a></li>
+                                        <li><a href="#emulsion">Emulsion</a></li>
+                                        <li><a href="#mask">Mask</a></li>
+                                        <li><a href="#cream">Cream</a></li>
+                                        <li><a href="#serum">Serum</a></li>
+                                        <li><a href="#special-care">Special Care</a></li>
+                                    </ul>
+                                </li>
+                                <li class="p-products-sidebar__group">
+                                    <button class="p-products-sidebar__button">
+                                        Base Makeup
+                                    </button>
+                                    <ul class="p-products-sidebar__submenu">
+                                        <li><a href="#tone-up-base">Tone Up Base</a></li>
+                                        <li><a href="#foundation">Foundation</a></li>
+                                        <li><a href="#powder">Powder</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </aside>
+                    <!--Products Content-->
+                    <div class="p-products-page__content">
+                        <section class="p-products-section" id="skincare">
+                            <h2 class="p-products-section__heading">Skincare</h2>
+                            <p class="p-products-section__text">
+                                Daily skincare that gently cleanses, hydrates and protects your skin.
+                            </p>
+                            <!-- クレンジング -->
+                            <div class="p-products-category" id="cleansing">
+                                <h3 class="p-products-category__title">Cleansing</h3>
+                                <div class="p-products-grid">
+                                    <article class="p-products-card"
+                                                data-id="cleansing-oil"
+                                                data-name="Melt Black Cleansing Oil"
+                                                data-price="2500"
+                                                data-image="images/products/cleansing.webp"> 
+                                        <a href="product.html?id=cleansing-oil"
+                                                class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/cleansing.webp" 
+                                                    alt="Melt Black Cleansing Oil">
+                                            </figure>
+                                        </a>
+                                        <div class="p-products-card__body">
+                                            <a href="product.html?id=cleansing-oil" 
+                                                class="p-products-card__link">
+                                                <h4 class="p-products-card__title">
+                                                    Melt Black<br>
+                                                    Cleansing Oil
+                                                </h4>
+                                                <p class="p-products-card__description">
+                                                    とろけるようにメイクや毛穴汚れを<br>
+                                                    やさしく落とし、肌を整えるクレンジングオイル。
+                                                </p>
+                                                <p class="p-products-card__price">150ml/¥2,500（税込）</p>
+                                            </a>
+                                            <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                    <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                        カートへ追加
+                                            </button>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                            <!-- 化粧水 -->
+                            <div class="p-products-category" id="toner">
+                                <h3 class="p-products-category__title">Toner</h3>
+                                <div class="p-products-grid">
+                                    <article class="p-products-card"
+                                                data-id="toner"
+                                                data-name="Aqua Balance Toner Moist"
+                                                data-price="3300"
+                                                data-image="images/products/toner.webp">
+                                        <a href="product.html?id=toner-moist" 
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/toner-moist.webp" 
+                                                    alt="Aqua Balance Toner Moist">
+                                            </figure>
+                                        </a>
+                                            <div class="p-products-card__body">
+                                                <a href="product.html?id=toner-moist" 
+                                                    class="p-products-card__link">
+                                                    <h4 class="p-products-card__title">
+                                                        Aqua Balance<br>
+                                                        Toner Moist
+                                                    </h4>
+                                                    <p class="p-products-card__description">
+                                                        乾燥しやすい肌にうるおいを与え、<br>
+                                                        しっとりと柔らかな肌へ導く。
+                                                    </p>
+                                                    <p class="p-products-card__price">200ml/¥3,300（税込）</p>
+                                                </a>
+                                                <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                    <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                        カートへ追加
+                                                </button>
+                                            </div>
+                                    </article>
+                                    <article class="p-products-card"
+                                                data-id="toner"
+                                                data-name="Aqua Balance Toner Light"
+                                                data-price="3300"
+                                                data-image="images/products/toner.webp">
+                                        <a href="product.html?id=toner-light" 
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/toner-light.webp" 
+                                                    alt="Aqua Balance Toner Light">
+                                            </figure>
+                                        </a>    
+                                            <div class="p-products-card__body">
+                                                <a href="product.html?id=toner-light" 
+                                                    class="p-products-card__link">
+                                                    <h4 class="p-products-card__title">
+                                                        Aqua Balance<br>
+                                                        Toner Light
+                                                    </h4>
+                                                    <p class="p-products-card__description">
+                                                        みずみずしい使い心地で、<br>
+                                                        さっぱりと透明感のある肌へ導く。
+                                                    </p>
+                                                    <p class="p-products-card__price">200ml/¥3,300（税込）</p>
+                                                </a>
+                                                <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                    <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                        カートへ追加
+                                                </button>
+                                            </div>
+                                    </article>
+                                </div>
+                            </div>
+                            <!-- 乳液 -->
+                            <div class="p-products-category" id="emulsion">
+                                <h3 class="p-products-category__title">Emulsion</h3>
+                                <div class="p-products-grid">
+                                    <article class="p-products-card"
+                                                data-id="emulsion"
+                                                data-name="Aqua Balance Emulsion Moist"
+                                                data-price="3600"
+                                                data-image="images/products/emulsion.webp">
+                                        <a href="product.html?id=emulsion-moist"
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/emulsion-moist.webp" 
+                                                    alt="Aqua Balance Emulsion Moist">
+                                            </figure>
+                                        </a>
+                                            <div class="p-products-card__body">
+                                                <a href="product.html?id=emulsion-moist" 
+                                                    class="p-products-card__link">
+                                                    <h4 class="p-products-card__title">
+                                                        Aqua Balance<br>
+                                                        Emulsion Moist
+                                                    </h4>
+                                                    <p class="p-products-card__description">
+                                                        しっとりとした使い心地で潤いを閉じ込め、<br>
+                                                        ふっくらなめらかな肌へ。
+                                                    </p>
+                                                    <p class="p-products-card__price">175ml/¥3,600（税込）</p>
+                                                </a>
+                                                <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                    <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                        カートへ追加
+                                                </button>
+                                            </div>
+                                    </article>
+                                    <article class="p-products-card"
+                                                data-id="emulsion"
+                                                data-name="Aqua Balance Emulsion Light"
+                                                data-price="3600"
+                                                data-image="images/products/emulsion.webp">
+                                        <a href="product.html?id=emulsion-light" 
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/emulsion-light.webp"
+                                                    alt="Aqua Balance Emulsion Light">
+                                            </figure>
+                                        </a>
+                                            <div class="p-products-card__body">
+                                                <a href="product.html?id=emulsion-light" 
+                                                    class="p-products-card__link">
+                                                    <h4 class="p-products-card__title">
+                                                        Aqua Balance<br>
+                                                        Emulsion Light
+                                                    </h4>
+                                                    <p class="p-products-card__description">
+                                                        さっぱりと軽やかに潤いを逃がさず、<br>
+                                                        透明感のある肌へ。
+                                                    </p>
+                                                    <p class="p-products-card__price">175ml/¥3,600（税込）</p>
+                                                </a>
+                                                <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                    <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                        カートへ追加
+                                                </button>
+                                            </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- 美容マスク3種類＋１週間お試しマスク  -->
+                        <section class="p-products-section" id="mask">
+                            <h2 class="p-products-section__heading">Mask Collection</h2>
+                            <p class="p-products-section__text">
+                                A collection of masks that provide deep hydration and nourishment for your skin.
+                            </p>
+                            <div class="p-products-category" id="mask">
+                                <h3 class="p-products-category__title">Mask Box Series</h3>
+                                <div class="p-products-grid">
+                                    <!-- 毛穴・角質ケア -->
+                                    <article class="p-products-card"
+                                                data-id="mask"
+                                                data-name="Midnight Pore Mask"
+                                                data-price="3500"
+                                                data-image="images/products/mask.webp">
+                                        <a href="product.html?id=midnight-pore-mask" 
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/midnight-pore-mask.webp" 
+                                                    alt="Midnight Pore Mask">
+                                            </figure>
+                                        </a>
+                                            <div class="p-products-card__body">
+                                                <a href="product.html?id=midnight-pore-mask" 
+                                                    class="p-products-card__link">
+                                                    <h4 class="p-products-card__title">
+                                                        Midnight Pore Mask
+                                                    </h4>
+                                                    <p class="p-products-card__description">
+                                                        古い毛穴や角質をケアし、<br>
+                                                        肌をなめらかに整えるマスク。
+                                                    </p>
+                                                    <p class="p-products-card__price">42枚入/¥3,500（税込）</p>
+                                                </a>
+                                                <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                    <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                        カートへ追加
+                                                </button>
+                                            </div>
+                                    </article>
+                                    <!-- トーンアップ・透明感ケア -->
+                                    <article class="p-products-card"
+                                                data-id="mask"
+                                                data-name="Moon Glow Mask"
+                                                data-price="3500"
+                                                data-image="images/products/mask.webp">
+                                        <a href="product.html?id=moon-glow-mask" 
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/moon-glow-mask.webp" 
+                                                    alt="Moon Glow Mask">
+                                            </figure>
+                                        </a>
+                                            <div class="p-products-card__body">
+                                                <a href="product.html?id=moon-glow-mask" 
+                                                    class="p-products-card__link">
+                                                    <h4 class="p-products-card__title">
+                                                        Moon Glow Mask
+                                                    </h4>
+                                                    <p class="p-products-card__description">
+                                                        うるおいと透明感を与え、<br>
+                                                        1トーン明るい素肌へ。
+                                                    </p>
+                                                    <p class="p-products-card__price">42枚入/¥3,500（税込）</p>
+                                                </a>
+                                                <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                    <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                        カートへ追加
+                                                </button>
+                                            </div>
+                                    </article>
+                                    <!-- ハリ・むくみ・リフトアップケア -->
+                                    <article class="p-products-card"
+                                                data-id="mask"
+                                                data-name="Bloom Lift Mask"
+                                                data-price="3500"
+                                                data-image="images/products/mask.webp">
+                                        <a href="product.html?id=bloom-lift-mask" 
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/bloom-lift-mask.webp" 
+                                                    alt="Bloom Lift Mask">
+                                            </figure>
+                                        </a>
+                                        <div class="p-products-card__body">
+                                            <a href="product.html?id=bloom-lift-mask" 
+                                                class="p-products-card__link">
+                                                <h4 class="p-products-card__title">
+                                                    Bloom Lift Mask
+                                                </h4>
+                                                <p class="p-products-card__description">
+                                                    ふっくらとしたハリを与え、<br>
+                                                    いきいきとした印象の素肌へ
+                                                </p>
+                                                <p class="p-products-card__price">42枚入/¥3,500（税込）</p>
+                                            </a>
+                                            <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                    カートへ追加
+                                            </button>  
+                                        </div>
+                                    </article>
+                                    <!-- トライアルマスク -->
+                                    <article class="p-products-card p-products-card--accordion"
+                                                data-id="trial-mask"
+                                                data-name="Trial Mask"
+                                                data-price="650"
+                                                data-image="images/products/trial-mask.webp">
+                                        <a href="product.html?id=trial-mask" 
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/trial-mask.webp" 
+                                                    alt="Trial Mask">
+                                            </figure>
+                                        </a>
+                                        <div class="p-products-card__body">
+                                            <a href="product.html?id=trial-mask" 
+                                                class="p-products-card__link">
+                                                <h4 class="p-products-card__title">
+                                                    Trial Mask
+                                                </h4>
+                                                <p class="p-products-card__description">
+                                                        3種類のマスクを気軽にお試しいただけます。
+                                                </p>
+                                                <p class="p-products-card__price">各7枚入/¥650（税込）</p>
+                                            </a>
+                                            <button class="p-products-accordion__button" 
+                                                    type="button"aria-expanded="false">
+                                                種類を選択
+                                                <span class="p-products-accordion__icon"></span>
+                                            </button>
+                                            <div class="p-products-accordion__content">
+                                                <div class="p-products-accordion__inner">
+                                                    <fieldset class="p-products-option"
+                                                                data-option-name="Type">
+                                                        <legend class="p-products-option__title">
+                                                            Type
+                                                        </legend>
+                                                        <label class="p-products-option__item">
+                                                            <input type="radio"name="trial-mask"
+                                                                    value="Midnight Pore">
+                                                            <span>Midnight Pore</span>
+                                                        </label>  
+                                                        <label class="p-products-option__item">
+                                                            <input type="radio"name="trial-mask"
+                                                                    value="Moon Glow">
+                                                            <span>Moon Glow</span>
+                                                        </label>
+                                                        <label class="p-products-option__item">
+                                                            <input type="radio"name="trial-mask"
+                                                                    value="Bloom Lift">
+                                                            <span>Bloom Lift</span>
+                                                        </label>
+                                                    </fieldset>
+                                                    <div class="p-products-quantity">
+                                                        <label class="p-products-quantity__label"
+                                                                for="trial-mask-quantity">
+                                                            数量
+                                                        </label>
+                                                        <select id="trial-mask-quantity"
+                                                            class="p-products-quantity__select">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                    <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                        カートへ追加
+                                            </button>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Special Care -->
+                        <section class="p-products-section"id="special-care">
+                            <h2 class="p-products-section__heading">Special Care</h2>
+                            <p class="p-products-section__text">
+                                Special care products that provide intensive treatment for your skin.
+                            </p>
+                            <div class="p-products-category" id="special-care">
+                                <h3 class="p-products-category__title">Cream</h3>
+                                <div class="p-products-grid">
+                                    <article class="p-products-card"
+                                                data-id="cream"
+                                                data-name="Deep Moist Midnight Cream"
+                                                data-price="4600"
+                                                data-image="images/products/cream.webp">
+                                        <a href="product.html?id=midnight-cream" 
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/midnight-cream.webp" 
+                                                    alt="Deep Moist Midnight Cream">
+                                            </figure>
+                                        </a>
+                                            <div class="p-products-card__body">
+                                                <a href="product.html?id=midnight-cream" 
+                                                    class="p-products-card__link">
+                                                    <h4 class="p-products-card__title">
+                                                        Deep Moist<br>
+                                                        Midnight Cream
+                                                    </h4>
+                                                    <p class="p-products-card__description">
+                                                        特別なご褒美にナイトクリームを。<br>
+                                                        眠っている間の濃密保湿で、翌朝の肌に自信。
+                                                    </p>
+                                                    <p class="p-products-card__price">50g/¥4,600（税込）</p>
+                                                </a>
+                                                <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                    <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                        カートへ追加
+                                                </button>
+                                            </div>
+                                    </article>
+                                    <article class="p-products-card"
+                                                data-id="serum"
+                                                data-name="Blue Moon Drop"
+                                                data-price="4900"
+                                                data-image="images/products/serum.webp">
+                                        <a href="product.html?id=blue-moon-drop" 
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/blue-moon-drop.webp" 
+                                                    alt="Blue Moon Drop">
+                                            </figure>
+                                        </a>
+                                        <div class="p-products-card__body">
+                                            <a href="product.html?id=blue-moon-drop" 
+                                                class="p-products-card__link">
+                                                <h4 class="p-products-card__title">
+                                                    Blue Moon Drop
+                                                </h4>
+                                                <p class="p-products-card__description">
+                                                    肌のすみずみまでうるおいを届け、<br>
+                                                    肌本来の美しさを引き出す、特別なセラム。
+                                                </p>
+                                                <p class="p-products-card__price">30ml/¥4,900（税込）</p>
+                                            </a>
+                                            <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                    <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                        カートへ追加
+                                            </button>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- ベースメイク -->
+                        <section class="p-products-section" id="base-makeup">
+                            <h2 class="p-products-section__heading">Base Makeup</h2>
+                            <p class="p-products-section__text">
+                                Base makeup products that provide a smooth, even canvas for your makeup.
+                            </p>
+                            <!-- 化粧下地 -->
+                            <div class="p-products-category" id="tone-up-base">
+                                <h3 class="p-products-category__title">UV Tone Up Base</h3>
+                                <div class="p-products-grid">
+                                    <article class="p-products-card"
+                                                data-id="tone-up-base"
+                                                data-name="Glow UV Tone Up Base"
+                                                data-price="3200"
+                                                data-image="images/products/trial-mask.webp">
+                                        <a href="product.html?id=glow-tone-up-base" 
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/glow-tone-up-base.webp" 
+                                                    alt="Glow UV Tone Up Base">
+                                            </figure>
+                                        </a>
+                                            <div class="p-products-card__body">
+                                                <a href="product.html?id=glow-tone-up-base" 
+                                                    class="p-products-card__link">
+                                                    <h4 class="p-products-card__title">
+                                                        Glow UV Tone Up Base</h4>
+                                                    <p class="p-products-card__description">
+                                                        光を味方に、内側から輝くツヤ肌へ。
+                                                    </p>
+                                                    <p class="p-products-card__price">30ml/¥3,200（税込）</p>
+                                                </a>
+                                                <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                    <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                        カートへ追加
+                                                </button>
+                                            </div>
+                                    </article>
+                                    <article class="p-products-card"
+                                                data-id="tone-up-base"
+                                                data-name="Airy UV Tone Up Base"
+                                                data-price="3200"
+                                                data-image="images/products/trial-mask.webp">
+                                        <a href="product.html?id=airy-tone-up-base" 
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/airy-tone-up-base.webp" 
+                                                    alt="Airy UV Tone Up Base">
+                                            </figure>
+                                        </a>
+                                        <div class="p-products-card__body">
+                                            <a href="product.html?id=airy-tone-up-base" 
+                                                    class="p-products-card__link">
+                                                <h4 class="p-products-card__title">
+                                                    Airy UV Tone Up Base
+                                                </h4>
+                                                <p class="p-products-card__description">
+                                                    まるでフィルターをかけたような毛穴レスな印象に。
+                                                </p>
+                                                <p class="p-products-card__price">30ml/¥3,200（税込）</p>
+                                            </a>
+                                            <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                    <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                        カートへ追加
+                                            </button>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                            <!-- ファンデーション -->
+                            <div class="p-products-category" id="foundation">
+                                <h3 class="p-products-category__title">Foundation</h3>
+                                <div class="p-products-grid">
+                                    <article class="p-products-card p-products-card--accordion"
+                                                data-id="foundation-liquid"
+                                                data-name="Cover Fit Skin Foundation Liquid"
+                                                data-price="4500"
+                                                data-image="images/products/foundation-liquid.webp">
+                                        <a href="product.html?id=liquid-foundation" 
+                                                class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/cover-fit-skin-foundation-liquid.webp" 
+                                                    alt="Cover Fit Skin Foundation Liquid">
+                                            </figure>
+                                        </a>
+                                        <div class="p-products-card__body">
+                                            <a href="product.html?id=liquid-foundation" 
+                                                class="p-products-card__link">
+                                                <h4 class="p-products-card__title">
+                                                    Cover Fit Skin<br>
+                                                    Foundation Liquid
+                                                </h4>
+                                                <p class="p-products-card__description">
+                                                    夏でも崩したくない、高密着・ハイカバー。<br>
+                                                    美しさを24時間キープするリキッドファンデーション。    
+                                                </p>
+                                                <p class="p-products-card__price">各30ml/¥4,500（税込）</p>
+                                            </a>
+                                            <button class="p-products-accordion__button" type="button"aria-expanded="false">
+                                                カラーを選択
+                                                <span class="p-products-accordion__icon"></span>
+                                            </button>
+                                            <div class="p-products-accordion__content">
+                                                <div class="p-products-accordion__inner">
+                                                    <fieldset class="p-products-option"
+                                                                data-option-name="Color">
+                                                        <legend class="p-products-option__title">
+                                                            Color
+                                                        </legend>
+                                                        <label class="p-products-option__item">
+                                                            <input type="radio"
+                                                                    name="Cover Fit Skin Foundation Liquid"
+                                                                    value="17Pale">
+                                                            <span>17Pale</span>
+                                                        </label>  
+                                                        <label class="p-products-option__item">
+                                                            <input type="radio"
+                                                                    name="Cover Fit Skin Foundation Liquid"
+                                                                    value="23Neutral">
+                                                            <span>23Neutral</span>
+                                                        </label>
+                                                        <label class="p-products-option__item">
+                                                            <input type="radio"
+                                                                    name="Cover Fit Skin Foundation Liquid"
+                                                                    value="25Warm">
+                                                                <span>25Warm</span>
+                                                        </label>
+                                                    </fieldset>
+                                                    <div class="p-products-quantity">
+                                                        <label class="p-products-quantity__label"
+                                                                for="foundation-liquid-quantity">
+                                                            数量
+                                                        </label>
+                                                        <select id="foundation-liquid-quantity"
+                                                            class="p-products-quantity__select">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                    カートへ追加
+                                            </button>
+                                        </div>
+                                    </article>
+                                    <article class="p-products-card p-products-card--accordion"
+                                                data-id="foundation-cushion"
+                                                data-name="Cover Fit Skin Foundation Cushion"
+                                                data-price="3800"
+                                                data-image="images/products/foundation-liquid.webp">
+                                        <a href="product.html?id=cushion-foundation" 
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/cover-fit-skin-foundation-cushion.webp" 
+                                                    alt="Cover Fit Skin Foundation Cushion">
+                                            </figure>
+                                        </a>
+                                        <div class="p-products-card__body">
+                                            <a href="product.html?id=cushion-foundation" 
+                                                class="p-products-card__link">
+                                                <h4 class="p-products-card__title">
+                                                    Cover Fit Skin<br>
+                                                    Foundation Cushion
+                                                </h4>
+                                                <p class="p-products-card__description">
+                                                    夏でも崩したくない、高密着・ハイカバー。<br>
+                                                    美しさを24時間キープするクッションファンデーション。
+                                                </p>
+                                                <p class="p-products-card__price">各15g（レフィル1個付）/¥3,800（税込）</p>
+                                            </a>
+                                            <button class="p-products-accordion__button" type="button"aria-expanded="false">
+                                                    カラーを選択
+                                                    <span class="p-products-accordion__icon"></span>
+                                            </button>
+                                            <div class="p-products-accordion__content">
+                                                <div class="p-products-accordion__inner">
+                                                    <fieldset class="p-products-option"
+                                                                data-option-name="Color">
+                                                        <legend class="p-products-option__title">
+                                                            Color
+                                                        </legend>
+                                                        <label class="p-products-option__item">
+                                                            <input type="radio"
+                                                                    name="Cover Fit Skin Foundation Cushion"
+                                                                    value="17Pale">
+                                                            <span>17Pale</span>
+                                                        </label>  
+                                                        <label class="p-products-option__item">
+                                                            <input type="radio"
+                                                                    name="Cover Fit Skin Foundation Cushion"
+                                                                    value="23Neutral">
+                                                            <span>23Neutral</span>
+                                                        </label>
+                                                        <label class="p-products-option__item">
+                                                            <input type="radio"
+                                                                    name="Cover Fit Skin Foundation Cushion"
+                                                                    value="25Warm">
+                                                                <span>25Warm</span>
+                                                        </label>
+                                                    </fieldset>
+                                                    <div class="p-products-quantity">
+                                                        <label class="p-products-quantity__label"
+                                                                for="foundation-cushion-quantity">
+                                                            数量
+                                                        </label>
+                                                        <select id="foundation-cushion-quantity"
+                                                            class="p-products-quantity__select">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                    カートへ追加
+                                            </button> 
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                            <!-- パウダー -->
+                            <div class="p-products-category" id="powder">
+                                <h3 class="p-products-category__title">Powder</h3>
+                                <div class="p-products-grid">
+                                    <article class="p-products-card"
+                                                data-id="powder"
+                                                data-name="Moon Blur Skin Finish Powder"
+                                                data-price="3300"
+                                                data-image="images/products/mask.webp">
+                                        <a href="product.html?id=powder" 
+                                            class="p-products-card__image-link">
+                                            <figure class="p-products-card__image">
+                                                <img src="images/products/moon-blur-skin-finish-powder.webp" 
+                                                    alt="Moon Blur Skin Finish Powder">
+                                            </figure>
+                                        </a>
+                                        <div class="p-products-card__body">
+                                            <a href="product.html?id=powder" 
+                                                class="p-products-card__link">
+                                                <h4 class="p-products-card__title">
+                                                    Moon Blur Skin<br>
+                                                    Finish Powder
+                                                </h4>
+                                                <p class="p-products-card__description">
+                                                    どんな光でも肌をより自然に、美しく見せる。<br>
+                                                    さらりとした使い心地のプレストパウダー。
+                                                </p>
+                                                <p class="p-products-card__price">12g/¥3,300（税込）</p>
+                                            </a>
+                                            <button class="c-button c-button--primary c-button--block p-products-card__cart">
+                                                    <i class="fa-solid fa-bag-shopping c-button__icon"></i>
+                                                        カートへ追加
+                                            </button>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div> 
+        <!-- Toast -->
+        <div class="c-toast" id="toast" aria-live="polite">
+            <i class="fa-solid fa-circle-check c-toast__icon"></i>
+            <span class="c-toast__text">
+                カートに追加しました
+            </span>
+        </div>
+        </main>
+        <footer class="p-footer">
+            <div class="p-footer__top">
+                <nav class="p-footer__nav p-footer__nav--left">
+                    <ul>
+                        <li><a href="#">Brand</a></li>
+                        <li><a href="#">Special Care</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <nav class="p-footer__nav p-footer__nav--right">
+                    <ul>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="p-footer__brand">
+                <h2 class="p-footer__logo">MI/NUIT</h2>
+                <div class="p-footer__cat">
+                    <div id="footer-cat"></div>
+                </div>
+                <p class="p-footer__message">
+                    See you at midnight.
+                </p>
+                <div class="p-footer__sns">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+                <small class="p-footer__copy">
+                    © 2026 MI/NUIT
+                </small>
+            </div>
+        </footer>
+        <script src="js/main.js"></script>
+        <script src="js/products.js"></script>
+    </body>
+</html>
