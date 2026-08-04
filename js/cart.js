@@ -30,12 +30,17 @@ function renderCart() {
         document.querySelector(
             ".p-cart__list"
         );
-    cartList.innerHTML = "";
-    cart.forEach((item) => {
-        cartList.innerHTML +=
-            createCartCard(item);
-    });
 
+    cartList.innerHTML = "";
+    if (cart.length === 0) {
+      cartList.innerHTML = createEmptyCart();
+    } else {
+
+      cart.forEach((item) => {
+          cartList.innerHTML +=
+            createCartCard(item);
+      });
+    }
     updateSummary(cart);
 }
 
@@ -90,10 +95,38 @@ function createCartCard(item) {
               </div>
           </div>
           <button
-            class="p-cart-card__remove">
-              i class="fa-solid fa-trash"></i>
+            class="p-cart-card__remove"
+            data-id="${item.id}"
+            data-option-name="${item.optionName}"
+            data-option="${item.optionValue}">
+            <i class="fa-solid fa-trash"></i>
           </button>
         </article>
+      `;
+}
+
+// ------------------------------------------
+// Empty Cart
+// ------------------------------------------
+
+function createEmptyCart() {
+    return `
+        <div class="p-cart-empty">
+            <i class="fa-solid fa-bag-shopping
+                      p-cart-empty__icon"></i>
+            <h3 class="p-cart-empty__title">
+                Your cart is empty
+            </h3>
+            <p class="p-cart-empty__text">
+                現在カートに商品はありません。
+            </p>
+            <a
+                href="products.html"
+                class="c-button
+                        c-button--primary">
+                商品一覧を見る
+            </a>
+        </div>
       `;
 }
 
@@ -156,18 +189,51 @@ function updateQuantity(id, optionName, optionValue, action) {
 // Quantity Button
 // ------------------------------------------
 
-document.addEventListener("click", (event) => {
-    if (
-        !event.target.classList.contains(
-            "p-cart-card__quantity-btn"
-        )
-    ) {
+  document.addEventListener("click", (event) => {
+    const quantityButton = event.target.closest(
+        ".p-cart-card__quantity-btn"
+    );
+
+    if (quantityButton) {
+        updateQuantity(
+            quantityButton.dataset.id,
+            quantityButton.dataset.optionName,
+            quantityButton.dataset.option,
+            quantityButton.dataset.action
+        );
+
         return;
     }
-    updateQuantity(
-        event.target.dataset.id,
-        event.target.dataset.optionName,
-        event.target.dataset.option,
-        event.target.dataset.action
+
+    const removeButton = event.target.closest(
+        ".p-cart-card__remove"
     );
+    if (removeButton) {
+        removeItem(
+            removeButton.dataset.id,
+            removeButton.dataset.optionName,
+            removeButton.dataset.option
+        );
+    }
 });
+
+// ------------------------------------------
+// Remove Item
+// ------------------------------------------
+
+function removeItem(id, optionName, optionValue) {
+    const cart = getCart().filter((product) => {
+        return !(
+            product.id === id &&
+            product.optionName === optionName &&
+            product.optionValue === optionValue
+        );
+    });
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    renderCart();
+}
