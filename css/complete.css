@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* ==========================================
-  01. Complete
+01. Complete
 ========================================== */
 
 .p-complete{
@@ -9,7 +9,7 @@
 }
 
 /* ==========================================
-  02. Card
+02. Card
 ========================================== */
 
 .p-complete__card{
@@ -25,14 +25,14 @@
 }
 
 /* ==========================================
-  03. Text
+03. Text
 ========================================== */
 
 .p-complete__sub-title{
     margin-bottom: 1rem;
-    color: var(--color-main);
+    color: var(--color-primary);
     font-family: var(--font-title);
-    font-size: 1.25rem;
+    font-size: 2rem;
     letter-spacing: .2em;
     text-transform: uppercase;
 }
@@ -50,7 +50,7 @@
 }
 
 /* ==========================================
-  04. Buttons
+04. Buttons
 ========================================== */
 
 .p-complete__buttons{
@@ -62,7 +62,7 @@
 }
 
 /* ==========================================
-  05. Responsive
+05. Responsive
 ========================================== */
 
 @media (max-width: 768px){

@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+/* ==========================================
+  01. Loading
+========================================== */
+
+.p-loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--space-6);
+}
+
+.p-loading__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* ==========================================
+  02. Footprints
+========================================== */
+
+.p-loading__footprints{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .75rem;
+    min-height: 48px;
+    margin-bottom: var(--space-5);
+}
+
+/* ==========================================
+  03. Message
+========================================== */
+
+.p-loading__text{
+    margin-bottom: var(--space-3);
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: 2rem;
+}
+
+.p-loading__subtext{
+    color: var(--color-text);
+    line-height: 1.8;
+}
+
+/* ==========================================
+  04. Responsive
+========================================== */
+
+@media screen and (max-width:768px){
+    .p-loading__text{
+        font-size: 1.6rem;
+    }
+}
+
+/* ==========================================
+  05. Paw
+========================================== */
+
+.p-loading__paw{
+    color: var(--color-text);
+    font-size: 1.8rem;
+    opacity: 0;
+    animation: fadeIn .4s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
