@@ -121,7 +121,6 @@ function updateSummary(cart) {
             break;
     }
 
-
     document.getElementById(
         "checkout-count"
     ).textContent =
@@ -189,11 +188,11 @@ document
 // 04. Validation
 // ==========================================
 // ------------------------------------------
-// Checkout Submit
+// Checkout Confirm Button
 // ------------------------------------------
 
 document
-    .getElementById("checkout-submit")
+    .getElementById("checkout-confirm")
     .addEventListener("click", () => {
         validateForm();
     });
@@ -354,8 +353,9 @@ if (
 }
 
     if (isValid) {
+        saveOrder();
         window.location.href =
-            "complete.html";
+            "confirm.html";
     }
 }
 
@@ -491,4 +491,71 @@ async function searchAddress() {
                 postalCodeError.textContent =
                     "住所を取得できませんでした。時間をおいてもう一度お試しください。";
             }
+}
+
+// ==========================================
+// 06. Order
+// ==========================================
+
+// ------------------------------------------
+// // Save Order Data to Local Storage
+// ------------------------------------------
+
+function saveOrder() {
+    const order = {
+        name:
+            document.getElementById(
+                "customer-name"
+            ).value,
+
+        kana:
+            document.getElementById(
+                "customer-kana"
+            ).value,
+
+        email:
+            document.getElementById(
+                "customer-email"
+            ).value,
+
+        phone:
+            document.getElementById(
+                "customer-phone"
+            ).value,
+
+        postal:
+            document.getElementById(
+                "postal-code"
+            ).value,
+
+        prefecture:
+            document.getElementById(
+                "prefecture"
+            ).value,
+
+        city:
+            document.getElementById(
+                "city"
+            ).value,
+
+        street:
+            document.getElementById(
+                "street"
+            ).value,
+
+        building:
+            document.getElementById(
+                "building"
+            ).value,
+
+        payment:
+            document.querySelector(
+                'input[name="payment"]:checked'
+            ).value
+    };
+
+    localStorage.setItem(
+        "order",
+        JSON.stringify(order)
+    );
 }
