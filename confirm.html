@@ -15,7 +15,9 @@
         <!-- CSS -->
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/summary.css">
         <link rel="stylesheet" href="css/confirm.css">
+    
         <title>Confirm | MI/NUIT</title>
     </head>
     <body>
@@ -92,6 +94,10 @@
                             <h3 class="p-summary__title">
                                 Order Summary
                             </h3>
+                            <p class="p-confirm__lead">
+                                内容をご確認のうえ、<br>
+                                「注文を確定する」を押してください。
+                            </p>
                             <div class="p-summary__products">
                             </div>
                             <dl class="p-summary__list">
@@ -120,11 +126,9 @@
                                     </dd>
                                 </div>
                                 <div class="p-summary__row
-                                            p-summary__row--total">
-                                    <dt>合計</dt>
-                                    <dd id="confirm-total">
-                                        ¥0
-                                    </dd>
+                                            p-summary__total">
+                                    <span>合計</span>
+                                    <strong id="confirm-total">¥0</strong>
                                 </div>
                             </dl>
                             <p
@@ -151,6 +155,8 @@
                     </div>
                 </div>
             </section>
-        </main>         
+        </main>  
+            <script src="js/main.js"></script>
+            <script src="js/confirm.js"></script>      
     </body>
 </html>

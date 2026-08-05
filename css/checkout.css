@@ -137,96 +137,6 @@
     font-size: .9rem;
 }
 
-
-
-/* ==========================================
-04.Order Summary
-========================================== */
-
-/* Summary Card */
-.p-summary{
-    position: sticky;
-    top: 120px;
-    padding: var(--space-5);
-    background: rgba(255,255,255,.92);
-    border-radius: var(--radius-l);
-    box-shadow: var(--shadow-card);
-}
-
-.p-summary__title{
-    margin-bottom: var(--space-4);
-    color: var(--color-primary);
-    font-family: var(--font-title);
-    font-size: 1.8rem;
-}
-
-.p-summary__products{
-    margin-bottom: var(--space-5);
-}
-
-/* Summary List */
-.p-summary__list{
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-}
-
-.p-summary__row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.p-summary__shipping-message{
-    margin: var(--space-5) 0;
-    padding-top: var(--space-4);
-    border-top: 1px solid rgba(0,0,0,.08);
-    color: var(--color-text-light);
-    font-size: .9rem;
-    text-align: center;
-}
-
-.p-summary__total{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--space-5);
-    padding-top: var(--space-4);
-    border-top: 1px solid rgba(0,0,0,.12);
-}
-
-.p-summary__total strong{
-    color: var(--color-primary);
-    font-size: 1.4rem;
-}
-
-.p-summary-product{
-    display: grid;
-    grid-template-columns: 60px 1fr auto;
-    gap: var(--space-3);
-    align-items: center;
-    margin-bottom: var(--space-4);
-}
-
-.p-summary-product__image{
-    width: 60px;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: var(--radius-s);
-}
-
-.p-summary-product__name{
-    font-weight: 600;
-}
-
-.p-summary-product__option{
-    color: var(--color-text-light);
-    font-size: .85rem;
-}
-
-.p-summary-product__quantity{
-    font-weight: 700;
-}
 /* ==========================================
 05.Validation
 ========================================== */
@@ -246,9 +156,5 @@
 @media screen and (max-width:768px){
     .p-checkout__layout{
         grid-template-columns: 1fr;
-    }
-
-    .p-checkout__summary{
-        position: static;
     }
 }

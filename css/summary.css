@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+/* ==========================================
+  Summary
+  Cart / Checkout / Confirm 共通
+========================================== */
+/* =========================================
+  01. Summary
+========================================== */
+
+.p-summary{
+    position: sticky;
+    top: 120px;
+    padding: var(--space-5);
+    background: rgba(255,255,255,.92);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+}
+
+.p-summary__title{
+    margin-bottom: var(--space-4);
+    padding-bottom: .75rem;
+    border-bottom: 1px solid #e8e8e8;
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+}
+
+.p-summary__row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.p-summary__shipping-message{
+    margin: var(--space-5) 0;
+    padding-top: var(--space-4);
+    border-top: 1px solid rgba(0,0,0,.08);
+    color: var(--color-text-light);
+    font-size: .875rem;
+    text-align: center;
+}
+
+.p-summary__total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid rgba(0,0,0,.12);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.p-summary__total strong{
+    color: var(--color-primary);
+    font-size: 1.4rem;
+}
+
+/* ==========================================
+  02. Product
+========================================== */
+.p-summary-product__body{
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.p-summary-product{
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: var(--space-3);
+    align-items: center;
+    margin-bottom: var(--space-5);
+}
+
+.p-summary-product__image{
+    width: 60px;
+    height: 60px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-s);
+}
+
+.p-summary-product__name{
+    font-weight: 600;
+}
+
+.p-summary-product__option{
+    color: var(--color-text-light);
+    font-size: .85rem;
+}
+
+.p-summary-product__quantity{
+    font-weight: 700;
+}
+
+/* ==========================================
+  03. List
+========================================== */
+
+.p-summary__list{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+}
+
+/* ==========================================
+  04. Responsive
+========================================== */
+
+@media screen and (max-width:768px){
+  .p-checkout__summary{
+        position: static;
+    }
+}

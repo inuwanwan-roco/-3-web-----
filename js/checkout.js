@@ -559,3 +559,75 @@ function saveOrder() {
         JSON.stringify(order)
     );
 }
+
+// ==========================================
+// 07. Restore Order
+// ==========================================
+
+// ------------------------------------------
+// Restore Order
+// ------------------------------------------
+
+function restoreOrder() {
+
+    const order = JSON.parse(
+        localStorage.getItem("order")
+    );
+
+    if (!order) {
+        return;
+    }
+
+    document.getElementById(
+        "customer-name"
+    ).value =
+        order.name;
+
+    document.getElementById(
+        "customer-kana"
+    ).value =
+        order.kana;
+
+    document.getElementById(
+        "customer-email"
+    ).value =
+        order.email;
+
+    document.getElementById(
+        "customer-phone"
+    ).value =
+        order.phone;
+
+    document.getElementById(
+        "postal-code"
+    ).value =
+        order.postal;
+
+    document.getElementById(
+        "prefecture"
+    ).value =
+        order.prefecture;
+
+    document.getElementById(
+        "city"
+    ).value =
+        order.city;
+
+    document.getElementById(
+        "street"
+    ).value =
+        order.street;
+
+    document.getElementById(
+        "building"
+    ).value =
+        order.building;
+
+    document.querySelector(
+        `input[name="payment"][value="${order.payment}"]`
+    ).checked = true;
+
+    renderCheckout();
+}
+
+restoreOrder();

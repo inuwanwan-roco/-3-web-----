@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+/* ==========================================
+01. Confirm
+========================================== */
+
+.p-confirm{
+    padding: 80px 0 120px;
+}
+
+/* ==========================================
+02. Layout
+========================================== */
+
+.p-confirm__wrapper{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-4);
+    align-items: start;
+}
+
+.p-confirm__content{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+/* ==========================================
+03. Card
+========================================== */
+
+.p-confirm-card{
+    background: rgba(255,255,255,.88);
+    border: 1px solid rgba(255,255,255,.5);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.p-confirm-card__title{
+    margin-bottom: 1.5rem;
+    padding-bottom: .75rem;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 1.25rem;
+    color: var(--color-main);
+}
+
+/* ==========================
+Lead
+============================= */
+
+.p-confirm__lead{
+    margin: 1rem 0 2rem;
+    text-align: center;
+    line-height: 1.8;
+    color: #666;
+}
+
+/* ==========================================
+04. Information
+========================================== */
+
+.p-confirm-card__list{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.p-confirm-card__row{
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: var(--space-2);
+    align-items: start;
+}
+
+.p-confirm-card__row dt{
+    font-weight: 600;
+    color: #666;
+}
+
+.p-confirm-card__row dd{
+    word-break: break-word;
+    line-height: 1.8;
+}
+
+/* ==========================================
+05. Buttons
+========================================== */
+
+.p-confirm__actions{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-top: 2rem;
+}
+
+/* ==========================================
+06. Responsive
+========================================== */
+
+@media (max-width: 768px){
+
+    .p-confirm{
+        padding: 60px 0 80px;
+    }
+
+    .p-confirm__wrapper{
+        grid-template-columns: 1fr;
+    }
+    
+    .p-confirm-card__row{
+        grid-template-columns: 1fr;
+        gap: .5rem;
+    }
+}
