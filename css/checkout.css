@@ -231,21 +231,24 @@
 05.Validation
 ========================================== */
 
-/* Error Message */
-
-/* Error Input */
-
+.p-form-group__error{
+    min-height: 1.2rem;
+    margin-top: .4rem;
+    color: #c84d5b;
+    font-size: .85rem;
+    font-weight: 500;
+}
 
 /* ==========================================
 06.Responsive
 ========================================== */
 
 @media screen and (max-width:768px){
-  .p-checkout__layout{
-    grid-template-columns: 1fr;
-  }
+    .p-checkout__layout{
+        grid-template-columns: 1fr;
+    }
 
-  .p-checkout__summary{
-    position: static;
-  }
+    .p-checkout__summary{
+        position: static;
+    }
 }

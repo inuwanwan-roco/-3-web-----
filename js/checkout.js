@@ -21,15 +21,15 @@ function renderCheckout() {
     const cart = getCart();
 
     const productsContainer =
-      document.querySelector(
-        ".p-summary__products"
+        document.querySelector(
+            ".p-summary__products"
     );
 
     productsContainer.innerHTML = "";
 
     cart.forEach((item) => {
         productsContainer.innerHTML +=
-          createSummaryItem(item);
+            createSummaryItem(item);
 
     });
 
@@ -60,16 +60,16 @@ function createSummaryItem(item) {
                     `<p class="p-summary-product__option">
                         ${item.optionName} :
                         ${item.optionValue}
-                      </p>`
+                    </p>`
                     :
                     ""
-                  }
+                }
             </div>
             <span class="p-summary-product__quantity">
                 ×${item.quantity}
             </span>
         </div>
-      `;
+    `;
 }
 
 // ==========================================
@@ -133,38 +133,38 @@ function updateSummary(cart) {
         `¥${subtotal.toLocaleString()}`;
 
     document.getElementById(
-      "checkout-shipping"
+        "checkout-shipping"
     ).textContent =
         shipping === 0
-          ? "無料"
-          : `¥${shipping.toLocaleString()}`;
+            ? "無料"
+            : `¥${shipping.toLocaleString()}`;
 
     document.getElementById(
         "checkout-fee"
     ).textContent =
         paymentFee === 0
-          ? "¥0"
-          : `¥${paymentFee.toLocaleString()}`;
+            ? "¥0"
+            : `¥${paymentFee.toLocaleString()}`;
         
     const shippingMessage =
-      document.getElementById(
+        document.getElementById(
         "checkout-shipping-message"
-      );
+        );
 
     shippingMessage.textContent =
         shipping === 0
             ? "送料無料"
             : "5,000円以上のお買い上げで送料無料";
 
-      const total =
+        const total =
         subtotal +
         shipping +
         paymentFee;
 
-      document.getElementById(
-          "checkout-total"
-      ).textContent =
-          `¥${total.toLocaleString()}`;
+        document.getElementById(
+            "checkout-total"
+        ).textContent =
+            `¥${total.toLocaleString()}`;
 }
 
 // ==========================================
@@ -184,3 +184,311 @@ document
             }
         );
     });
+
+// ==========================================
+// 04. Validation
+// ==========================================
+// ------------------------------------------
+// Checkout Submit
+// ------------------------------------------
+
+document
+    .getElementById("checkout-submit")
+    .addEventListener("click", () => {
+        validateForm();
+    });
+
+// ------------------------------------------
+// Validate Form
+// ------------------------------------------
+
+function validateForm() {
+    let isValid = true;
+
+    const fields = [
+        {
+            id: "customer-name",
+            message: "お名前を入力してください。"
+        },
+        {
+            id: "customer-kana",
+            message: "フリガナを入力してください。"
+        },
+        {
+            id: "customer-email",
+            message: "メールアドレスを入力してください。"
+        },
+        {
+            id: "customer-phone",
+            message: "電話番号を入力してください。"
+        },
+        {
+            id: "postal-code",
+            message: "郵便番号を入力してください。"
+        },
+        {
+            id: "prefecture",
+            message: "都道府県を選択してください。"
+        },
+        {
+            id: "city",
+            message: "市区町村を入力してください。"
+        },
+        {
+            id: "street",
+            message: "番地を入力してください。"
+        }
+    ];
+
+    fields.forEach((field) => {
+
+        const input =
+            document.getElementById(field.id);
+
+        const error =
+            input.parentElement.querySelector(
+                ".p-form-group__error"
+            );
+
+        input.classList.remove("is-error");
+        error.textContent = "";
+
+        if (input.value.trim() === "") {
+            input.classList.add("is-error");
+            error.textContent = field.message;
+            isValid = false;
+        }
+    });
+
+// ------------------------------------------
+// Email Format
+// ------------------------------------------
+
+const email =
+    document.getElementById(
+        "customer-email"
+    );
+
+const emailError =
+    email.parentElement.querySelector(
+        ".p-form-group__error"
+    );
+
+const emailPattern =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (
+    email.value.trim() !== "" &&
+    !emailPattern.test(email.value)
+) {
+
+    email.classList.add("is-error");
+    emailError.textContent =
+        "メールアドレスの形式が正しくありません。";
+    isValid = false;
+}
+
+// ------------------------------------------
+// Phone Format
+// ------------------------------------------
+
+const phone =
+    document.getElementById(
+        "customer-phone"
+    );
+
+const phoneError =
+    phone.parentElement.querySelector(
+        ".p-form-group__error"
+    );
+
+const phoneValue =
+    phone.value.replace(/-/g, "");
+
+const phonePattern =
+    /^\d{10,11}$/;
+
+if (
+    phone.value.trim() !== "" &&
+    !phonePattern.test(phoneValue)
+) {
+
+    phone.classList.add("is-error");
+    phoneError.textContent =
+        "電話番号を正しく入力してください。";
+    isValid = false;
+}
+
+// ------------------------------------------
+// Postal Code Format
+// ------------------------------------------
+
+const postalCode =
+    document.getElementById(
+        "postal-code"
+    );
+
+const postalCodeError =
+    postalCode.parentElement.querySelector(
+        ".p-form-group__error"
+    );
+
+// ハイフンを除去
+const postalCodeValue =
+    postalCode.value.replace(/-/g, "");
+
+const postalCodePattern =
+    /^\d{7}$/;
+
+if (
+    postalCode.value.trim() !== "" &&
+    !postalCodePattern.test(
+        postalCodeValue
+    )
+) {
+
+    postalCode.classList.add("is-error");
+    postalCodeError.textContent =
+        "郵便番号を正しく入力してください。";
+    isValid = false;
+}
+
+    if (isValid) {
+        window.location.href =
+            "complete.html";
+    }
+}
+
+// ==========================================
+// 05. Address
+// ==========================================
+// ------------------------------------------
+// Postal Code Event
+// ------------------------------------------
+
+document
+    .getElementById("postal-code")
+    .addEventListener("blur", () => {
+        searchAddress();
+    });
+
+// ------------------------------------------
+// Search Address
+// ------------------------------------------
+
+async function searchAddress() {
+    const postalCode = document
+        .getElementById("postal-code")
+        .value
+        .replace(/-/g, "");
+
+    if (postalCode.length !== 7) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${postalCode}`
+        );
+
+        const data = await response.json();
+
+        console.log(data);
+
+        if (
+            data.status !== 200 ||
+            !data.results
+        ) {
+
+            const postalCode =
+                document.getElementById(
+                    "postal-code"
+                );
+
+            const postalCodeError =
+                postalCode.parentElement.querySelector(
+                    ".p-form-group__error"
+                );
+
+            postalCode.classList.add("is-error");
+
+            postalCodeError.textContent =
+                "該当する住所が見つかりませんでした。";
+
+            return;
+        }
+
+        const address =
+            data.results[0];
+
+        document.getElementById(
+            "prefecture"
+        ).value =
+            address.address1;
+
+        document.getElementById(
+            "city"
+        ).value =
+            address.address2 +
+            address.address3;
+
+        // ------------------------------------------
+        // Clear Validation
+        // ------------------------------------------
+
+        const prefecture =
+            document.getElementById(
+                "prefecture"
+            );
+
+        const city =
+            document.getElementById(
+                "city"
+            );
+
+        prefecture.classList.remove(
+            "is-error"
+        );
+
+        city.classList.remove(
+            "is-error"
+        );
+
+        prefecture
+            .parentElement
+            .querySelector(
+                ".p-form-group__error"
+            ).textContent = "";
+
+        city
+            .parentElement
+            .querySelector(
+                ".p-form-group__error"
+            ).textContent = "";
+
+            } catch (error) {
+
+                console.error(
+                    "住所検索エラー",
+                    error
+                );
+
+                const postalCode =
+                    document.getElementById(
+                        "postal-code"
+                    );
+
+                const postalCodeError =
+                    postalCode.parentElement.querySelector(
+                        ".p-form-group__error"
+                    );
+
+                postalCode.classList.add(
+                    "is-error"
+                );
+
+                postalCodeError.textContent =
+                    "住所を取得できませんでした。時間をおいてもう一度お試しください。";
+            }
+}
