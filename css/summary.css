@@ -111,7 +111,7 @@
 ========================================== */
 
 @media screen and (max-width:768px){
-  .p-checkout__summary{
+  .p-summary{
         position: static;
     }
 }

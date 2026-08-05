@@ -22,12 +22,6 @@
     gap: var(--space-6);
 }
 
-
-.p-checkout__summary{
-    position: sticky;
-    top: 120px;
-}
-
 /* ==========================================
 02.Checkout Section
 ========================================== */
