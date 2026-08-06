@@ -1,6 +1,27 @@
 @charset "UTF-8";
 
 /* ==========================================
+Fade In
+========================================== */
+
+body{
+    opacity: 0;
+    animation: fadeIn .8s ease forwards;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ==========================================
 01. Complete
 ========================================== */
 
@@ -47,6 +68,58 @@
     margin-bottom: 1rem;
     line-height: 2;
     color: #555;
+}
+
+/* ===============================
+Complete Icon
+================================*/
+
+.p-complete__icon{
+    display: block;
+    margin-bottom: var(--space-4);
+    color: var(--color-moon);
+    font-size: 4rem;
+    text-shadow:
+        0 6px 10px rgba(81, 80, 80, 0.129);
+    animation:
+        float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{
+        transform: translateY(0);
+    }
+
+    50%{
+        transform: translateY(-4px);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+Order Number
+============================ */
+
+.p-complete__order{
+    margin-bottom: var(--space-5);
+}
+
+.p-complete__order-label{
+    margin-bottom: .2rem;
+    color: var(--color-text-light);
+    font-size: .85rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+}
+
+.p-complete__order-number{
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    letter-spacing: .08em;
 }
 
 /* ==========================================

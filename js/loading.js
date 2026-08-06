@@ -28,8 +28,8 @@ const interval = setInterval(() => {
 
             window.location.href = "complete.html";
 
-        }, 1000);
+        }, 1200);
 
     }
 
-}, 350);
+}, 450);
