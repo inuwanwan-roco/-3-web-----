@@ -1,12 +1,20 @@
 # 💄 MI/NUIT - ブランドサイト制作
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Responsive](https://img.shields.io/badge/Responsive-Mobile%20First-22C55E?style=for-the-badge)
+![Swiper.js](https://img.shields.io/badge/Swiper.js-6332F6?style=for-the-badge&logo=swiper&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
 ## 🌐 Demo
-
+➡️ **Live Site**  
 https://inuwanwan-roco.github.io/-3-web-----/
 
 ## 📂 Repository
 
-https://github.com/〇〇/MI-NUIT
+https://github.com/inuwanwan-roco/-3-web-----
 
 ## 📷 Preview
 
@@ -14,9 +22,12 @@ https://github.com/〇〇/MI-NUIT
 
 ## 📖 プロジェクト概要
 
-「**MI/NUIT（ミニュイ）**」は、架空のスキンケア・化粧品のブランドサイトです。
+「**MI/NUIT（ミニュイ）**」
+> 架空の韓国コスメブランド「MI/NUIT」のブランドサイトです。  
+> ブランド設計からデザイン、コーディングまで一貫して制作しました。
 
-ブランドコンセプトからサイト設計、デザイン、コーディングまでを一貫して制作しました。幻想的で高級感のある世界観を表現し、商品の魅力を伝えながら、ユーザーが直感的に商品を探し、購入までスムーズに進めるUI・UXを目指しています。
+幻想的で高級感のある世界観を表現し、商品の魅力を伝えながら、ユーザーが直感的に商品を探し、
+購入までスムーズに進めるUI・UXを目指しています。
 
 ---
 
