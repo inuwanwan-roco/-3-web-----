@@ -11,10 +11,10 @@ Architecture : FLOCSS + BEM */
 
 :root {
     --color-primary: #1b6ba4;
-    --color-primary-light: #b0d7fa;
+    --color-primary-light: #ddf1fe;
     --color-accent: #176cadb1;
-    --color-bg: #43454a;
-    --color-bg-light: #10213d;
+    --color-bg: #414244;
+    --color-bg-light: #172e54;
     --color-white: #ffffff;
     --color-black: #000000;
     --color-primary-dark: #243B73;
@@ -23,7 +23,7 @@ Architecture : FLOCSS + BEM */
     --color-custom: #31a9ff;
     --color-header-scrolled:rgba(8, 18, 40, 0.65);
     --color-border: rgba(255, 255, 255, 0.118);
-    --color-moon: #f1e717d6;
+    --color-moon: #fdf228e1;
 
     /* Typography */
 
@@ -215,7 +215,7 @@ iframe{
 }
 
 /* ==================================================
- 02. Layout
+02. Layout
 ================================================== */
 
 /* Container */
@@ -248,7 +248,95 @@ iframe{
 }
 
 /* ==================================================
-    03. Component
+03. Header
+================================================== */
+.l-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-modal);
+    transition:
+        background var(--transition-base),
+        backdrop-filter var(--transition-base),
+        box-shadow var(--transition-base);
+}
+
+.l-header.is-scrolled{
+    background: var(--color-header-scrolled);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: var(--header-shadow-scrolled);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.l-header__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: var(--header-height);
+}
+
+.l-header__logo a{
+    color: var(--color-white);
+    font-family: var(--font-title);
+    font-size: 2.7rem;
+    letter-spacing: .1em;
+    transition: var(--transition);
+}
+
+.l-header__logo a:hover{
+    color: var(--color-primary);
+}
+
+.l-header__nav{
+    display: flex;
+    align-items: center;
+}
+
+.l-header__menu{
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+}
+
+.l-header__link{
+    position: relative;
+    color: var(--color-white);
+    font-size: 1rem;
+    letter-spacing: .08em;
+    transition: var(--transition);
+}
+
+.l-header__link::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: var(--transition);
+}
+
+.l-header__link:hover{
+    color: var(--color-primary);
+}
+
+.l-header__link:hover::after{
+    width: 100%;
+}
+
+.l-header__actions{
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+
+
+/* ==================================================
+04. Component
 ================================================== */
 /* ------------------------------------------
 Section Heading
@@ -270,20 +358,23 @@ Section Heading
 
 .c-section-heading__title{
     font-size: 2rem;
-    color: var(--color-primary-dark);
+    color: var(--color-white);
     font-weight: bold;
 }
 
 .c-section-heading__subtitle{
-    color: var(--color-primary-light);
+    color: var(--color-text);
     font-family: var(--font-title);
-    font-size: 1.2rem;
+    text-shadow: 0 3px 6px white;
+    font-weight: 700;
+    font-size: 1.3rem;
     letter-spacing: .25em;
     text-transform: uppercase;
 }
 
 .c-section-heading__description{
     max-width: 700px;
+    font-weight: 400;
     color: var(--color-primary-light);
 }
 
@@ -319,17 +410,21 @@ Button
     justify-content: center;
     align-items: center;
     gap: var(--space-1);
-    min-width: auto;
+    min-width: 180px;
     min-height: 48px;
     padding: var(--button-padding-y) 
             var(--button-padding-x);
     border: none;
-    border-radius: var(--radius-pill);
     font-size: 1rem;
     font-weight: 600;
+    letter-spacing: .08em;
     text-decoration: none;
     cursor: pointer;
-    transition: var(--transition);
+    transition:
+        background-color .3s ease,
+        color .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
 }
 
 /* Focus */
@@ -342,14 +437,16 @@ Button
 /* Primary */
 
 .c-button--primary{
-    color: var(--color-white);
-    background: var(--color-primary);
-    min-width: 180px;
+    color: var(--color-bg-light);
+    background: var(--color-white);
+
 }
 
 .c-button--primary:hover{
-    background: var(--color-primary-dark);
+    background: var(--color-moon);
+    color: var(--color-white);
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.18);
 }
 
 /* Secondary */ 
@@ -366,7 +463,7 @@ Button
 /* Outline */
 
 .c-button--outline{
-    color: var(--color-primary);
+    color: var(--color-bg-light);
     background: var(--color-white);
     border: 1px solid var(--color-primary);
 }
@@ -374,6 +471,8 @@ Button
 .c-button--outline:hover{
     background: var(--color-primary);
     color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.18); 
 }
 
 /* Ghost */
@@ -393,9 +492,10 @@ Button
     position: relative;
     display: inline-block;
     padding-bottom: 12px;
-    color: var(--color-primary);
+    color: var(--color-custom);
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.386);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 700;
     overflow: hidden;
     width: fit-content;
     flex: none;
@@ -412,7 +512,6 @@ Button
     background: currentColor;
     opacity: .8;
 }
-
 
 .c-button--link::before{
     transform: translateX(0);
@@ -461,7 +560,8 @@ Breadcrumb
 ------------------------------------------ */
 
 .c-breadcrumb {
-    padding: var(--space-5) 0;
+    padding-top: 80px;   /* お好みで調整 */
+    padding-bottom: 40px
 }
 
 .c-breadcrumb__list {
@@ -669,7 +769,7 @@ End Marker
 
 
 /* ==================================================
-04. Utility
+05. Utility
 ================================================== */
 
 /* Display */
@@ -742,7 +842,7 @@ End Marker
 }
 
 /* ==================================================
-05. Animation
+06. Animation
 ================================================== */
 
 .fade-up{
@@ -776,4 +876,8 @@ End Marker
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+body.is-menu-open{
+    overflow:hidden;
 }

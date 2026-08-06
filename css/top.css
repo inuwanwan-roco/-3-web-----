@@ -3,94 +3,9 @@
 /* TOP PAGE 
 Architecture : FLOCSS + BEM */
 
-/* ==================================================
-    01. Header
-================================================== */
-.l-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: var(--z-modal);
-    transition:
-        background var(--transition-base),
-        backdrop-filter var(--transition-base),
-        box-shadow var(--transition-base);
-}
-
-.l-header.is-scrolled{
-    background: var(--color-header-scrolled);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: var(--header-shadow-scrolled);
-    border-bottom: 1px solid rgba(255,255,255,.08);
-}
-
-.l-header__inner{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: var(--header-height);
-}
-
-.l-header__logo a{
-    color: var(--color-white);
-    font-family: var(--font-title);
-    font-size: 2.7rem;
-    letter-spacing: .1em;
-    transition: var(--transition);
-}
-
-.l-header__logo a:hover{
-    color: var(--color-primary);
-}
-
-.l-header__nav{
-    display: flex;
-    align-items: center;
-}
-
-.l-header__menu{
-    display: flex;
-    align-items: center;
-    gap: var(--space-5);
-}
-
-.l-header__link{
-    position: relative;
-    color: var(--color-white);
-    font-size: 1rem;
-    letter-spacing: .08em;
-    transition: var(--transition);
-}
-
-.l-header__link::after{
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0;
-    height: 2px;
-    background: var(--color-primary);
-    transition: var(--transition);
-}
-
-.l-header__link:hover{
-    color: var(--color-primary);
-}
-
-.l-header__link:hover::after{
-    width: 100%;
-}
-
-.l-header__actions{
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-}
 
 /* ==================================================
-    02. Hero
+01. Hero
 ================================================== */
 
 .p-hero{
@@ -106,6 +21,7 @@ Architecture : FLOCSS + BEM */
     position: absolute;
     display: block;
     user-select: none;
+    pointer-events: none;
     inset: 0;
     width: 100%;
     height: 100%;
@@ -196,13 +112,8 @@ Architecture : FLOCSS + BEM */
     line-height: 2;
 }
 
-.p-hero__buttons{
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-}
-
 /* Scroll */
+
 .p-hero__scroll{
     position: absolute;
     left: 50%;
@@ -247,7 +158,7 @@ Architecture : FLOCSS + BEM */
 }
 
 /* ==================================================
-    03. Brand
+02. Brand
 ================================================== */
 
 .p-brand{
@@ -298,13 +209,13 @@ Architecture : FLOCSS + BEM */
     font-size: clamp(2rem,3vw,4rem);
     color: var(--color-primary);
     font-weight: bold;
-    text-shadow: var(--text-shadow2);
+    text-shadow: 0 2px 7px rgba(255, 255, 255, 0.692);
     margin-bottom: var(--space-2);
     line-height: 1.4;
 }
 
 .p-brand__text p{
-    color: var(--color-text);
+    color: var(--color-white);
     line-height: 2;
 }
 
@@ -326,7 +237,7 @@ Architecture : FLOCSS + BEM */
 }
 
 /* ==================================================
-    04. Products
+03. Products
 ================================================== */
 
 .p-products__grid{
@@ -478,7 +389,7 @@ Architecture : FLOCSS + BEM */
 
 
 /* ==================================================
-    05. Special Care
+04. Special Care
 ================================================== */
 
 .p-special-care .c-section-description{
@@ -574,7 +485,7 @@ Architecture : FLOCSS + BEM */
 }
 
 /* ==================================================
-    06. News
+05. News
 ================================================== */
 .p-news {
     padding: 120px 0;
@@ -645,7 +556,7 @@ Architecture : FLOCSS + BEM */
 }
 
 /* ==================================================
-    07. Contact
+06. Contact
 ================================================== */
 .p-contact{
     padding: 140px 0;
@@ -746,7 +657,7 @@ Architecture : FLOCSS + BEM */
 }
 
 /* ==================================================
-    08. Footer
+07. Footer
 ================================================== */
 .p-footer{
     padding: 100px 8% 60px;
@@ -783,6 +694,10 @@ Architecture : FLOCSS + BEM */
     padding-top: 60px;
     margin-top: 70px;
     border-top: 1px dotted var(--color-border);
+}
+
+.p-footer__logo{
+    color: var(--color-white);
 }
 
 .p-footer__sns{
@@ -842,5 +757,30 @@ Footer Cat animation
 }
 
 /* ==================================================
-    09. Responsive
+08. Responsive
 ================================================== */
+@media (max-width:768px){
+    :root{
+        --header-height:72px;
+        --container-padding:20px;
+    }
+
+    /* Header */
+
+    .l-header__inner{
+        min-height: var(--header-height);
+    }
+
+    .l-header__logo a{
+        font-size:2rem;
+    }
+
+    .l-header__nav{
+        display:none;
+    }
+
+    .l-header__actions{
+        display:none;
+    }
+
+}
