@@ -745,17 +745,6 @@ Footer Cat animation
     font-style: italic;
 }
 
-@media screen and (max-width:768px){
-    #footer-cat{
-        width: 100px;
-        height: 100px;
-    }
-    .p-footer__message{
-        font-size: .85rem;
-        margin-bottom: 30px;
-    }
-}
-
 /* ==================================================
 08. Responsive
 ================================================== */
@@ -783,4 +772,184 @@ Footer Cat animation
         display:none;
     }
 
+    /* Hero */
+
+    .p-hero{
+        min-height: 100svh;
+    }
+
+    .p-hero__inner{
+        min-height: 100svh;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .p-hero__content{
+        max-width: 100%;
+    }
+
+    .p-hero__copy-small{
+        margin-top: 0;
+        font-size: 1rem;
+    }
+
+    .p-hero__title{
+        font-size: 2.3rem;
+    }
+
+    .p-hero__en{
+        font-size: 1.2rem;
+    }
+
+    .p-hero__subtitle{
+        font-size: .95rem;
+    }
+
+    .p-hero__text{
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: .95rem;
+    }
+
+    .p-hero__scroll{
+        display: none;
+    }
+    
+    /* Brand */
+
+    .p-brand{
+        margin-top: -60px;
+        padding-top: 140px;
+    }
+
+    .p-brand__content{
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    .p-brand__image{
+        max-width: 420px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .p-brand__text{
+        text-align: center;
+        align-items: center;
+    }
+
+    .p-brand .c-button{
+        width: 100%;
+        max-width: 320px;
+    }
+
+    /* Products */
+
+    .p-products__grid{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "cleansing"
+            "toner"
+            "emulsion"
+            "primer"
+            "liquid"
+            "mask"
+            "special"
+            "cushion"
+            "powder";
+    }
+
+    .p-product-card{
+        min-height: auto;
+    }
+
+    .p-product-card--liquid,
+    .p-product-card--special{
+        min-height: auto;
+    }
+
+    /* Special Care */
+
+    .p-special-care__content{
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    .p-special-care__text{
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .p-special-care__features{
+        align-items: center;
+    }
+
+    .p-special-care__title{
+        font-size: 2.3rem;
+    }
+
+    .p-special-care__description{
+        font-size: 1rem;
+    }
+
+    /* News */
+
+    .p-news__list{
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact */
+
+    .p-contact{
+        padding: 80px 0;
+    }
+
+    .p-contact__lead{
+        font-size: 2rem;
+    }
+
+    .p-contact__sub{
+        font-size: 1.2rem;
+    }
+
+    .p-contact__text{
+        font-size: 1.1rem;
+    }
+
+    .p-contact .c-button{
+        width: 100%;
+        max-width: 320px;
+    }
+
+        /* Footer */
+
+    .p-footer{
+        padding: 70px 20px 40px;
+    }
+
+    .p-footer__top{
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-8);
+        margin-bottom: 50px;
+    }
+
+    .p-footer__nav{
+        text-align: center;
+    }
+
+    .p-footer__brand{
+        margin-top: 40px;
+        padding-top: 40px;
+    }
+
+    #footer-cat{
+        width: 100px;
+        height: 100px;
+    }
+    .p-footer__message{
+        font-size: .85rem;
+        margin-bottom: 30px;
+    }
 }

@@ -614,6 +614,25 @@ Footer
 }
 
 @media screen and (max-width:768px){
+
+    /* Header */
+
+    .l-header__inner{
+        min-height: var(--header-height);
+    }
+
+    .l-header__logo a{
+        font-size:2rem;
+    }
+
+    .l-header__nav{
+        display:none;
+    }
+
+    .l-header__actions{
+        display:none;
+    }
+
     .p-products-page__layout{
         grid-template-columns: 1fr;
     }
