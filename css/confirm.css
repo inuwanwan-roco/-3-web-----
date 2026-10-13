@@ -14,7 +14,7 @@
 
 .p-confirm__wrapper{
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: minmax(0,2fr) minmax(280px,1fr);
     gap: var(--space-4);
     align-items: start;
 }
@@ -99,7 +99,7 @@ Lead
 06. Responsive
 ========================================== */
 
-@media (max-width: 768px){
+@media (max-width: 1024px){
 
     .p-confirm{
         padding: 60px 0 80px;
@@ -114,3 +114,11 @@ Lead
         gap: .5rem;
     }
 }
+
+
+/* Responsive layout refinement */
+
+.p-confirm-card { padding: clamp(20px, 3vw, 32px); }
+.p-confirm__content { min-width: 0; }
+.p-confirm-card__row { grid-template-columns: 140px minmax(0,1fr); }
+@media (max-width: 768px) { .p-confirm-card__row { grid-template-columns: 1fr; } }

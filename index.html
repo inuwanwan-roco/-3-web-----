@@ -19,8 +19,8 @@
         <link rel="stylesheet" href="css/top.css">
         <title>MI/NUIT</title>
     </head>
-    <body>
-        <header class="l-header">
+    <body class="p-top-page">
+        <header class="l-header l-header--steady">
             <div class="l-container">
                 <div class="l-header__inner">
                     <!-- Logo -->
@@ -28,7 +28,8 @@
                         <a href="index.html">MI/NUIT</a>
                     </h1>
                     <!-- Navigation -->
-                    <nav class="l-header__nav">
+                    <button type="button" class="l-header__toggle" aria-controls="header-navigation" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+                    <nav class="l-header__nav" id="header-navigation" aria-label="メインナビゲーション">
                         <ul class="l-header__menu">
                             <li class="l-header__item">
                                 <a href="brand.html" class="l-header__link">
@@ -55,12 +56,14 @@
                                     Contact
                                 </a>
                             </li>
+                            <li class="l-header__item l-header__item--mobile"><a href="products.html" class="l-header__link">SHOP</a></li>
+                            <li class="l-header__item l-header__item--mobile"><a href="cart.html" class="l-header__link">CART</a></li>
                         </ul>
                     </nav>
                     <!-- Button Area -->
                     <div class="l-header__actions">
                         <a href="products.html"
-                            class="c-button c-button--primary">
+                            class="l-header__shop">
                             SHOP
                         </a>
                     </div>
@@ -92,28 +95,30 @@
                                 <p class="p-hero__subtitle">
                                     ― 真夜中の魔法をまとう
                                 </p>
-                                <p class="p-hero__text">
-                                    スキンケアとメイクは、<br>
-                                    単なる身支度ではなく、<br>
-                                    「なりたい自分へ変わるための魔法」。<br>
-                                    MI / NUITは、<br>
-                                    真夜中に現れる黒猫のように、<br>
-                                    あなた本来の美しさへと<br>
-                                    そっと導きます。
-                                </p>
                             </div>
                         </div>
                     </div>
                     <!-- Decoration -->
+                    <div class="p-hero__sparkles" aria-hidden="true">
+                        <span class="p-hero__sparkle" style="--spark-x:72%;--spark-y:12%;--spark-size:3px;--spark-duration:4.6s;--spark-delay:-1.8s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:88%;--spark-y:25%;--spark-size:2px;--spark-duration:6.3s;--spark-delay:-4.1s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:62%;--spark-y:38%;--spark-size:2px;--spark-duration:5.4s;--spark-delay:-0.9s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:94%;--spark-y:49%;--spark-size:3px;--spark-duration:3.8s;--spark-delay:-2.7s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:76%;--spark-y:61%;--spark-size:2px;--spark-duration:6.8s;--spark-delay:-5.2s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:90%;--spark-y:74%;--spark-size:2px;--spark-duration:4.9s;--spark-delay:-3.1s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:59%;--spark-y:84%;--spark-size:3px;--spark-duration:5.8s;--spark-delay:-4.4s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:81%;--spark-y:91%;--spark-size:2px;--spark-duration:3.6s;--spark-delay:-0.6s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:48%;--spark-y:9%;--spark-size:2px;--spark-duration:5.1s;--spark-delay:-2.3s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:96%;--spark-y:17%;--spark-size:2px;--spark-duration:6.1s;--spark-delay:-3.6s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:54%;--spark-y:56%;--spark-size:2px;--spark-duration:4.2s;--spark-delay:-1.4s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:68%;--spark-y:72%;--spark-size:3px;--spark-duration:6.6s;--spark-delay:-5.8s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:83%;--spark-y:43%;--spark-size:2px;--spark-duration:3.9s;--spark-delay:-2.9s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:41%;--spark-y:88%;--spark-size:2px;--spark-duration:5.7s;--spark-delay:-0.8s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:92%;--spark-y:89%;--spark-size:3px;--spark-duration:4.7s;--spark-delay:-3.8s"></span>
+                        <span class="p-hero__sparkle" style="--spark-x:64%;--spark-y:21%;--spark-size:2px;--spark-duration:6.4s;--spark-delay:-4.9s"></span>
+                    </div>
                     <div class="p-hero__gradient"></div>
                     <div class="p-hero__noise"></div>
-                    <!-- Scroll -->
-                    <div class="p-hero__scroll">
-                        <span class="p-hero__scroll-text">
-                            SCROLL
-                        </span>
-                        <div class="p-hero__scroll-line"></div>
-                    </div>
             </section>
             <!-- Brand -->
             <section class="p-brand l-section" id="brand">

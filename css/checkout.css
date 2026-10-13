@@ -5,12 +5,12 @@
 ========================================== */
 
 .p-checkout{
-    padding: var(--space-7) 0;
+    padding: var(--space-8) 0;
 }
 
 .p-checkout__layout{
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: minmax(0,2fr) minmax(280px,1fr);
     gap: var(--space-6);
     align-items: start;
 }
@@ -147,8 +147,16 @@
 06.Responsive
 ========================================== */
 
-@media screen and (max-width:768px){
+@media screen and (max-width:1024px){
     .p-checkout__layout{
         grid-template-columns: 1fr;
     }
 }
+
+/* Responsive layout refinement */
+
+.p-checkout-section { padding: clamp(20px, 3vw, 40px); }
+.p-checkout__form, .p-form-group, .p-payment { min-width: 0; }
+.p-form-group__input, .p-form-group__select { min-width: 0; font-size: 1rem; }
+.p-payment__item { flex-wrap: wrap; padding: 16px; }
+.p-payment__fee { margin-left: auto; }

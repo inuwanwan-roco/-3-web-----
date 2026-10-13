@@ -19,7 +19,7 @@
         <title>Products | MI/NUIT</title>
     </head>
     <body>
-        <header class="l-header">
+        <header class="l-header l-header--light">
             <div class="l-container">
                 <div class="l-header__inner">
                     <!-- Logo -->
@@ -27,7 +27,8 @@
                         <a href="index.html">MI/NUIT</a>
                     </h1>
                     <!-- Navigation -->
-                    <nav class="l-header__nav">
+                    <button type="button" class="l-header__toggle" aria-controls="header-navigation" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+                    <nav class="l-header__nav" id="header-navigation" aria-label="メインナビゲーション">
                         <ul class="l-header__menu">
                             <li class="l-header__item">
                                 <a href="#brand" class="l-header__link">
@@ -170,7 +171,7 @@
                                         <a href="product.html?id=toner-moist" 
                                             class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/toner-moist.webp" 
+                                                <img src="images/products/toner.webp" 
                                                     alt="Aqua Balance Toner Moist">
                                             </figure>
                                         </a>
@@ -201,7 +202,7 @@
                                         <a href="product.html?id=toner-light" 
                                             class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/toner-light.webp" 
+                                                <img src="images/products/toner.webp" 
                                                     alt="Aqua Balance Toner Light">
                                             </figure>
                                         </a>    
@@ -238,7 +239,7 @@
                                         <a href="product.html?id=emulsion-moist"
                                             class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/emulsion-moist.webp" 
+                                                <img src="images/products/emulsion.webp" 
                                                     alt="Aqua Balance Emulsion Moist">
                                             </figure>
                                         </a>
@@ -269,7 +270,7 @@
                                         <a href="product.html?id=emulsion-light" 
                                             class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/emulsion-light.webp"
+                                                <img src="images/products/emulsion.webp"
                                                     alt="Aqua Balance Emulsion Light">
                                             </figure>
                                         </a>
@@ -313,7 +314,7 @@
                                         <a href="product.html?id=midnight-pore-mask" 
                                             class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/midnight-pore-mask.webp" 
+                                                <img src="images/products/mask.webp" 
                                                     alt="Midnight Pore Mask">
                                             </figure>
                                         </a>
@@ -344,7 +345,7 @@
                                         <a href="product.html?id=moon-glow-mask" 
                                             class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/moon-glow-mask.webp" 
+                                                <img src="images/products/mask.webp" 
                                                     alt="Moon Glow Mask">
                                             </figure>
                                         </a>
@@ -375,7 +376,7 @@
                                         <a href="product.html?id=bloom-lift-mask" 
                                             class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/bloom-lift-mask.webp" 
+                                                <img src="images/products/mask.webp" 
                                                     alt="Bloom Lift Mask">
                                             </figure>
                                         </a>
@@ -491,7 +492,7 @@
                                         <a href="product.html?id=midnight-cream" 
                                             class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/Cream.webp" 
+                                                <img src="images/products/cream.webp" 
                                                     alt="Deep Moist Midnight Cream">
                                             </figure>
                                         </a>
@@ -522,7 +523,7 @@
                                         <a href="product.html?id=blue-moon-drop" 
                                             class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/blue-moon-drop.webp" 
+                                                <img src="images/products/serum.webp" 
                                                     alt="Blue Moon Drop">
                                             </figure>
                                         </a>
@@ -561,11 +562,11 @@
                                                 data-id="tone-up-base"
                                                 data-name="Glow UV Tone Up Base"
                                                 data-price="3200"
-                                                data-image="images/products/trial-mask.webp">
+                                                data-image="images/products/base.webp">
                                         <a href="product.html?id=glow-tone-up-base" 
                                             class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/glow-tone-up-base.webp" 
+                                                <img src="images/products/base.webp" 
                                                     alt="Glow UV Tone Up Base">
                                             </figure>
                                         </a>
@@ -589,11 +590,11 @@
                                                 data-id="tone-up-base"
                                                 data-name="Airy UV Tone Up Base"
                                                 data-price="3200"
-                                                data-image="images/products/trial-mask.webp">
+                                                data-image="images/products/base.webp">
                                         <a href="product.html?id=airy-tone-up-base" 
                                             class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/airy-tone-up-base.webp" 
+                                                <img src="images/products/base.webp" 
                                                     alt="Airy UV Tone Up Base">
                                             </figure>
                                         </a>
@@ -624,11 +625,11 @@
                                                 data-id="foundation-liquid"
                                                 data-name="Cover Fit Skin Foundation Liquid"
                                                 data-price="4500"
-                                                data-image="images/products/foundation-liquid.webp">
+                                                data-image="images/products/foundationL.webp">
                                         <a href="product.html?id=liquid-foundation" 
                                                 class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/cover-fit-skin-foundation-liquid.webp" 
+                                                <img src="images/products/foundationL.webp" 
                                                     alt="Cover Fit Skin Foundation Liquid">
                                             </figure>
                                         </a>
@@ -701,11 +702,11 @@
                                                 data-id="foundation-cushion"
                                                 data-name="Cover Fit Skin Foundation Cushion"
                                                 data-price="3800"
-                                                data-image="images/products/foundation-liquid.webp">
+                                                data-image="images/products/foundationC.webp">
                                         <a href="product.html?id=cushion-foundation" 
                                             class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/cover-fit-skin-foundation-cushion.webp" 
+                                                <img src="images/products/foundationC.webp" 
                                                     alt="Cover Fit Skin Foundation Cushion">
                                             </figure>
                                         </a>
@@ -784,11 +785,11 @@
                                                 data-id="powder"
                                                 data-name="Moon Blur Skin Finish Powder"
                                                 data-price="3300"
-                                                data-image="images/products/mask.webp">
+                                                data-image="images/products/powder.webp">
                                         <a href="product.html?id=powder" 
                                             class="p-products-card__image-link">
                                             <figure class="p-products-card__image">
-                                                <img src="images/products/moon-blur-skin-finish-powder.webp" 
+                                                <img src="images/products/powder.webp" 
                                                     alt="Moon Blur Skin Finish Powder">
                                             </figure>
                                         </a>

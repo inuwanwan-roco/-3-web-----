@@ -1,17 +1,4 @@
 // ==========================================
-// 01. Header
-// ==========================================
-
-//Header Scroll Effect
-
-const header = document.querySelector(".l-header");
-if (header) {
-    window.addEventListener("scroll", () => {
-        header.classList.toggle("is-scrolled", window.scrollY > 50);
-    });
-}
-
-// ==========================================
 // 02. Background Animation
 // ==========================================
 

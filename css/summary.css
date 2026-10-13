@@ -115,3 +115,12 @@
         position: static;
     }
 }
+
+/* Responsive layout refinement */
+
+.p-summary { padding: clamp(20px, 3vw, 40px); min-width: 0; }
+.p-summary-product { grid-template-columns: 60px minmax(0,1fr) auto; gap: 12px; }
+.p-summary-product__image { object-fit: contain; }
+.p-summary-product__body { min-width: 0; overflow-wrap: anywhere; }
+.p-summary__row, .p-summary__total { flex-wrap: wrap; gap: 8px; }
+@media (max-width: 1024px) { .p-summary { position: static; } }

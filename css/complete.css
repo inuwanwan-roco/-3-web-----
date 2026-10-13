@@ -162,3 +162,9 @@ Order Number
         max-width: 320px;
     }
 }
+
+/* Responsive layout refinement */
+
+.p-complete__card { padding: clamp(24px, 5vw, 64px) clamp(20px, 4vw, 48px); }
+.p-complete__order-number { overflow-wrap: anywhere; }
+.p-complete__buttons .c-button { min-width: 0; }
