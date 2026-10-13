@@ -78,7 +78,7 @@ Architecture : FLOCSS + BEM */
 }
 
 .p-hero__title{
-    margin-bottom: var(--space-5);
+    margin-bottom: 0;
     color: var(--color-white);
     font-family: var(--font-title);
     font-size: clamp(2rem, 3vw, 4rem);
@@ -88,21 +88,6 @@ Architecture : FLOCSS + BEM */
 
 .p-hero__title span{
     color: var(--color-primary-light);
-}
-
-.p-hero__en{
-    margin-bottom: var(--space-2);
-    color: var(--color-custom);
-    text-shadow: var(--text-shadow2);
-    font-family: var(--font-title);
-    font-size: 1.6rem;
-    letter-spacing: .15em;
-}
-
-.p-hero__subtitle{
-    margin-bottom: var(--space-4);
-    color: var(--color-primary-light);
-    font-size: 1rem;
 }
 
 /* ==================================================
@@ -705,11 +690,11 @@ Footer Cat animation
     /* Hero */
 
     .p-hero{
-        min-height: 100svh;
+        min-height: var(--hero-mobile-height, 100svh);
     }
 
     .p-hero__inner{
-        min-height: 100svh;
+        min-height: var(--hero-mobile-height, 100svh);
         justify-content: center;
         text-align: center;
     }
@@ -725,14 +710,6 @@ Footer Cat animation
 
     .p-hero__title{
         font-size: 2.3rem;
-    }
-
-    .p-hero__en{
-        font-size: 1.2rem;
-    }
-
-    .p-hero__subtitle{
-        font-size: .95rem;
     }
 
 /* Brand */
@@ -904,7 +881,6 @@ Footer Cat animation
 
 @media (max-width: 375px) {
     .p-hero__title { font-size: clamp(1.25rem, 5.7vw, 1.45rem); }
-    .p-hero__en { font-size: 1rem; }
 }
 
 /* TOP header and hero refinements */
@@ -931,7 +907,6 @@ Footer Cat animation
 .l-header__shop:hover { opacity: .75; }
 .l-header__shop:focus-visible { outline: 2px solid var(--color-primary-light); outline-offset: 4px; }
 .l-header__item--mobile { display: none; }
-.p-hero__en { margin-top: clamp(40px, 5vw, 80px); }
 .p-hero__sparkles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 3; }
 .p-hero__sparkle {
     position: absolute;
@@ -956,7 +931,6 @@ Footer Cat animation
     .l-header--steady .l-header__item--mobile { display: list-item; }
 }
 @media (max-width: 768px) {
-    .p-hero__en { margin-top: 40px; }
     .p-hero__sparkle:nth-child(n+9) { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {

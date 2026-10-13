@@ -1,3 +1,22 @@
+// Keep mobile hero framing stable when browser chrome changes viewport height.
+// Width changes (including orientation changes) recalculate the initial framing.
+const mobileHero = document.querySelector('.p-hero');
+if (mobileHero) {
+    const mobileHeroQuery = window.matchMedia('(max-width: 768px)');
+    let heroViewportWidth;
+    const setMobileHeroHeight = () => {
+        const width = document.documentElement.clientWidth;
+        if (width === heroViewportWidth) return;
+        heroViewportWidth = width;
+        mobileHero.style.removeProperty('--hero-mobile-height');
+        if (mobileHeroQuery.matches) {
+            mobileHero.style.setProperty('--hero-mobile-height', `${mobileHero.getBoundingClientRect().height}px`);
+        }
+    };
+    setMobileHeroHeight();
+    window.addEventListener('resize', setMobileHeroHeight, { passive: true });
+}
+
 // ==========================================
 // 02. Background Animation
 // ==========================================
