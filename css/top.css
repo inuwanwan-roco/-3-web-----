@@ -45,18 +45,6 @@ Architecture : FLOCSS + BEM */
     z-index: var( --z-sub);
 }
 
-/* Noise（写真にフィルターみたいなやつをかける必要になったら追加）  
-.hero__noise{
-    position: absolute;
-    inset: 0;
-    opacity: .04;
-    background-image:
-        url("../images/common/noise.webp");
-    pointer-events: none;
-    z-index: 3;
-}
-*/
-
 .p-hero__inner{
     position: relative;
     display: flex;
