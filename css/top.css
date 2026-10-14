@@ -227,7 +227,41 @@ Architecture : FLOCSS + BEM */
 }
 
 .p-products .c-section-heading__title{
-    font-size: clamp(1.5rem, 4.2vw, 2rem);
+    font-size: clamp(1.5rem, calc(7.8vw - 4.75px), 2rem);
+}
+
+.p-products__guidance{
+    margin-top: 8px;
+    font-size: .875rem;
+    color: var(--color-primary-light);
+    line-height: 1.8;
+}
+
+.p-products__guidance-desktop{
+    display: none;
+}
+
+@media (min-width: 769px){
+    .p-products .c-section-heading__subtitle{
+        font-size: clamp(2.25rem, 3.2vw, 3.5rem);
+        line-height: 1.2;
+    }
+
+    .p-products .c-section-heading__title{
+        font-size: clamp(2.25rem, 3.3vw, 3.625rem);
+    }
+
+    .p-products__guidance{
+        font-size: 1rem;
+    }
+
+    .p-products__guidance-desktop{
+        display: inline;
+    }
+
+    .p-products__guidance-mobile{
+        display: none;
+    }
 }
 
 .p-products__grid{
@@ -241,7 +275,7 @@ Architecture : FLOCSS + BEM */
     grid-template-areas:
     "cleansing toner emulsion primer liquid"
     "cleansing mask mask primer liquid"
-    "special special special cushion powder";
+    "special special special cushion cushion";
     gap: var(--space-3);
     /* align-items: stretch; */
 }
@@ -306,10 +340,6 @@ Architecture : FLOCSS + BEM */
     grid-area: cushion;
 }
 
-.p-product-card--powder{
-    grid-area: powder;
-}
-
 .p-product-card__image{
     display: flex;
     justify-content: center;
@@ -349,10 +379,6 @@ Architecture : FLOCSS + BEM */
 
 .p-product-card--special img{
     max-width: 180px;
-}
-
-.p-product-card--powder img{
-    max-width: 140px;
 }
 
 .p-product-card__content{
@@ -965,7 +991,7 @@ Footer Cat animation
 .p-contact__content:hover .p-contact__lead-ja, .p-contact__content:hover .p-contact__sub-ja { transform: translateY(0); }
 .p-footer__top { gap: clamp(40px, 10vw, 224px); flex-wrap: wrap; }
 @media (min-width: 769px) and (max-width: 1200px) {
-    .p-products__grid { grid-template-columns: repeat(3, minmax(0,1fr)); grid-template-areas: "cleansing toner emulsion" "cleansing mask mask" "primer liquid cushion" "special special powder"; }
+    .p-products__grid { grid-template-columns: repeat(3, minmax(0,1fr)); grid-template-areas: "cleansing toner emulsion" "cleansing mask mask" "primer liquid cushion" "special special cushion"; }
     .p-product-card--liquid { min-height: 320px; }
 }
 @media (max-width: 768px) {
