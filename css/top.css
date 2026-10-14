@@ -953,3 +953,14 @@ Footer Cat animation
     .p-hero__inner { justify-content: flex-start; text-align: left; }
     .p-hero__copy-small { top: calc(var(--header-height) + 32px); }
 }
+
+/* Preserve the supplied portrait composition without cropping its products. */
+.p-hero__visual { position: absolute; inset: 0; width: 100%; height: 100%; }
+@media (max-width: 767px) {
+    .p-hero { background: rgb(8, 18, 40); }
+    .p-hero, .p-hero__inner {
+        min-height: var(--hero-mobile-height, calc(100vw * 1672 / 941 + var(--header-height)));
+    }
+    .p-hero__visual { top: var(--header-height); height: calc(100% - var(--header-height)); }
+    .p-hero__image { object-position: center; }
+}
