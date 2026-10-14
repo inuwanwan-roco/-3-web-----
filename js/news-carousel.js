@@ -22,11 +22,18 @@
     let autoplayTimer = 0;
     let inView = false;
     let paused = false;
+    let expandedCard = null;
+    let collapsedHeight = 0;
+    let measuredWidth = 0;
+    let heightTimer = 0;
+    let gesture = null;
+    const textMeasure = document.createElement('canvas').getContext('2d');
 
-    const hasCardFocus = () => cards.some((card) => card.contains(document.activeElement));
+    const hasCardFocus = () => cards.some((card) => card.contains(document.activeElement) &&
+        !card.classList.contains('is-pointer-focus'));
     const stopAutoplay = () => { clearTimeout(autoplayTimer); autoplayTimer = 0; };
     const canAutoplay = () => active && inView && !paused && !moving && !pointerDown &&
-        !document.hidden && !reducedMotion.matches && !hasCardFocus();
+        !document.hidden && !reducedMotion.matches && !hasCardFocus() && !expandedCard;
     const scheduleAutoplay = () => {
         stopAutoplay();
         if (canAutoplay()) {
@@ -45,6 +52,97 @@
             paused ? 'ニュースの自動再生を再開' : 'ニュースの自動再生を一時停止');
     };
 
+    // Fit only NEWS copy; preserve a readable 14px minimum and allow extra wrapping.
+    const fitTypography = () => {
+        list.style.setProperty('--news-title-size', '24px');
+        list.style.setProperty('--news-body-size', '16px');
+        for (const [selector, property, maximum] of [
+            ['.p-news-card__title .p-news-card__line', '--news-title-size', 24],
+            [`.p-news-card__copy--${active ? 'mobile' : 'desktop'} .p-news-card__line`, '--news-body-size', 16]
+        ]) {
+            let size = maximum;
+            cards.forEach((card) => {
+                const style = getComputedStyle(card);
+                const available = card.getBoundingClientRect().width - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+                card.querySelectorAll(selector).forEach((line) => {
+                    const computed = getComputedStyle(line);
+                    textMeasure.font = computed.font;
+                    const text = line.textContent;
+                    const tracking = (parseFloat(computed.letterSpacing) || 0) * [...text].length;
+                    const width = textMeasure.measureText(text).width;
+                    size = Math.min(size, (available - tracking - 1) / width * maximum);
+                });
+            });
+            list.style.setProperty(property, `${Math.max(14, Math.floor(size * 100) / 100)}px`);
+        }
+    };
+    const naturalHeight = (card, open) => {
+        // Measure a hidden copy so rapid repeated taps never reset an in-flight transition.
+        const copy = card.cloneNode(true);
+        copy.removeAttribute('id');
+        copy.querySelectorAll('[id]').forEach((node) => node.removeAttribute('id'));
+        copy.classList.toggle('is-expanded', open);
+        copy.inert = true;
+        copy.setAttribute('aria-hidden', 'true');
+        Object.assign(copy.style, {
+            position: 'absolute', left: '0', top: '0', visibility: 'hidden',
+            width: `${card.getBoundingClientRect().width}px`, height: 'auto',
+            minHeight: '0', transition: 'none', transform: 'none'
+        });
+        list.append(copy);
+        const height = copy.getBoundingClientRect().height;
+        copy.remove();
+        return height;
+    };
+    const applyHeights = (animate = true) => {
+        if (!active) return;
+        const targets = slides.map((card) => card === expandedCard ? naturalHeight(card, true) : collapsedHeight);
+        if (!animate) {
+            list.style.transition = 'none';
+            slides.forEach((card) => { card.style.transition = 'none'; });
+        }
+        slides.forEach((card, index) => { card.style.height = `${targets[index]}px`; });
+        const style = getComputedStyle(list);
+        const chrome = list.offsetHeight - list.clientHeight;
+        list.style.height = `${Math.max(...targets) + parseFloat(style.paddingTop) + parseFloat(style.paddingBottom) + chrome}px`;
+        if (!animate) {
+            void list.offsetHeight;
+            list.style.removeProperty('transition');
+            slides.forEach((card) => card.style.removeProperty('transition'));
+        }
+        clearTimeout(heightTimer);
+        heightTimer = setTimeout(() => {
+            window.ScrollTrigger?.refresh();
+            scheduleAutoplay();
+        }, animate && !reducedMotion.matches ? 360 : 0);
+    };
+    const refreshCards = () => {
+        fitTypography();
+        measuredWidth = list.clientWidth;
+        if (active) {
+            collapsedHeight = Math.max(...cards.map((card) => naturalHeight(card, false)));
+            applyHeights(false);
+        } else {
+            list.style.removeProperty('height');
+            cards.forEach((card) => card.style.removeProperty('height'));
+        }
+    };
+    const setExpanded = (card, open) => {
+        if (!active) return;
+        stopAutoplay();
+        if (expandedCard && expandedCard !== card) {
+            expandedCard.classList.remove('is-expanded');
+            expandedCard.setAttribute('aria-expanded', 'false');
+        }
+        expandedCard = open ? card : null;
+        card.classList.toggle('is-expanded', open);
+        card.setAttribute('aria-expanded', String(open));
+        applyHeights();
+    };
+    const collapseExpanded = () => {
+        if (expandedCard) setExpanded(expandedCard, false);
+    };
+
     const offset = (index) => slides[index].offsetLeft - slides[0].offsetLeft;
     const nearest = () => slides.reduce((best, card, index) =>
         Math.abs(offset(index) - list.scrollLeft) < Math.abs(offset(best) - list.scrollLeft) ? index : best, 0);
@@ -56,7 +154,9 @@
         list.classList.remove('is-moving');
     };
     const finish = (visualIndex) => {
-        current = (visualIndex - 1 + cards.length) % cards.length;
+        const next = (visualIndex - 1 + cards.length) % cards.length;
+        if (next !== current) collapseExpanded();
+        current = next;
         // The inert end copies let the last-to-first transition move one card.
         if (visualIndex === 0 || visualIndex === slides.length - 1) {
             list.classList.add('is-moving');
@@ -68,6 +168,7 @@
     };
     const moveTo = (visualIndex) => {
         if (!active) return;
+        collapseExpanded();
         stopAutoplay();
         clearTimeout(settleTimer);
         cancelMotion();
@@ -108,11 +209,23 @@
         cancelMotion();
         clearTimeout(settleTimer);
         list.querySelectorAll('[data-news-clone]').forEach((copy) => copy.remove());
+        expandedCard = null;
         active = mobile.matches;
+        section.classList.toggle('p-news--expandable', active);
         controls.hidden = !active;
         cards.forEach((card) => {
-            if (active) card.tabIndex = 0;
-            else card.removeAttribute('tabindex');
+            card.classList.remove('is-expanded', 'is-pointer-focus');
+            card.style.removeProperty('height');
+            if (active) {
+                card.tabIndex = 0;
+                card.setAttribute('role', 'button');
+                card.setAttribute('aria-expanded', 'false');
+                card.setAttribute('aria-controls', card.querySelector('.p-news-card__text').id);
+                card.setAttribute('aria-labelledby', card.querySelector('h3').id);
+                card.setAttribute('aria-describedby', `${card.querySelector('time').id} ${card.querySelector('.p-news-card__text').id} news-expand-hint`);
+            } else {
+                ['tabindex', 'role', 'aria-expanded', 'aria-controls', 'aria-labelledby', 'aria-describedby'].forEach((name) => card.removeAttribute(name));
+            }
         });
         if (active) {
             list.tabIndex = 0;
@@ -129,6 +242,7 @@
             list.removeAttribute('aria-roledescription');
             list.scrollLeft = 0;
         }
+        refreshCards();
         updatePosition();
         updatePlayback();
         scheduleAutoplay();
@@ -140,6 +254,13 @@
     controls.querySelector('.p-news__next').addEventListener('click', () => moveBy(1));
     list.addEventListener('keydown', (event) => {
         if (!active) return;
+        cards.forEach((card) => card.classList.remove('is-pointer-focus'));
+        const card = event.target.closest('.p-news-card:not([data-news-clone])');
+        if (card && !event.target.closest('a, button, input, textarea, select') && ['Enter', ' '].includes(event.key)) {
+            event.preventDefault();
+            setExpanded(card, expandedCard !== card);
+            return;
+        }
         if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {
             event.preventDefault();
             if (event.key === 'Home') moveTo(1);
@@ -155,7 +276,9 @@
             if (!pointerDown) finish(nearest());
         }, 180);
     }, { passive: true });
-    list.addEventListener('pointerdown', () => {
+    list.addEventListener('pointerdown', (event) => {
+        gesture = { x: event.clientX, y: event.clientY, moved: false };
+        event.target.closest('.p-news-card')?.classList.add('is-pointer-focus');
         pointerDown = true;
         stopAutoplay();
         cancelMotion();
@@ -167,7 +290,21 @@
         settleTimer = setTimeout(() => finish(nearest()), 180);
     };
     window.addEventListener('pointerup', release, { passive: true });
-    window.addEventListener('pointercancel', release, { passive: true });
+    window.addEventListener('pointercancel', () => {
+        gesture = null;
+        release();
+    }, { passive: true });
+    window.addEventListener('pointermove', (event) => {
+        if (gesture && Math.hypot(event.clientX - gesture.x, event.clientY - gesture.y) >= 10) gesture.moved = true;
+    }, { passive: true });
+    list.addEventListener('click', (event) => {
+        const card = event.target.closest('.p-news-card:not([data-news-clone])');
+        if (!active || !card || event.target.closest('a, button, input, textarea, select')) return;
+        const isTap = event.detail === 0 || (gesture && !gesture.moved &&
+            Math.hypot(event.clientX - gesture.x, event.clientY - gesture.y) < 10);
+        gesture = null;
+        if (isTap) setExpanded(card, expandedCard !== card);
+    });
     // Native touch panning cancels pointer events before the finger is lifted.
     list.addEventListener('touchstart', () => {
         touching = true;
@@ -183,6 +320,7 @@
     window.addEventListener('touchend', releaseTouch, { passive: true });
     window.addEventListener('touchcancel', releaseTouch, { passive: true });
     list.addEventListener('wheel', () => {
+        gesture = null;
         stopAutoplay();
         cancelMotion();
         clearTimeout(settleTimer);
@@ -194,7 +332,12 @@
             cancelMotion();
         }
     });
-    list.addEventListener('focusout', () => queueMicrotask(scheduleAutoplay));
+    list.addEventListener('focusout', () => queueMicrotask(() => {
+        cards.forEach((card) => {
+            if (!card.contains(document.activeElement)) card.classList.remove('is-pointer-focus');
+        });
+        scheduleAutoplay();
+    }));
     playback.addEventListener('click', () => {
         paused = !paused;
         updatePlayback();
@@ -226,8 +369,21 @@
         updatePlayback();
         if (active) { cancelMotion(); finish(nearest()); }
     });
-    window.addEventListener('resize', () => {
-        if (active) { cancelMotion(); moveTo(current + 1); }
-    }, { passive: true });
+    const resizeObserver = new ResizeObserver(() => {
+        if (Math.abs(list.clientWidth - measuredWidth) < 0.5) return;
+        refreshCards();
+        if (active) {
+            cancelMotion();
+            list.classList.add('is-moving');
+            list.scrollTo({ left: offset(current + 1), behavior: 'instant' });
+            list.classList.remove('is-moving');
+        }
+        scheduleAutoplay();
+    });
+    resizeObserver.observe(list);
     configure();
+    document.fonts.ready.then(() => {
+        refreshCards();
+        window.ScrollTrigger?.refresh();
+    });
 })();

@@ -567,7 +567,8 @@ Architecture : FLOCSS + BEM */
 .p-news-card {
     display: flex;
     flex-direction: column;
-    padding: 32px;
+    min-height: 392px;
+    padding: 23px;
     background: var(--color-white);
     border-radius: var(--radius-l);
     box-shadow: var(--box-shadow2);
@@ -603,7 +604,8 @@ Architecture : FLOCSS + BEM */
 
 .p-news-card__title {
     margin-bottom: 18px;
-    font-size: 1.5rem;
+    min-height: 3.2em;
+    font-size: var(--news-title-size, 1.5rem);
     font-weight: 600;
     line-height: 1.6;
     color: var(--color-text);
@@ -612,8 +614,23 @@ Architecture : FLOCSS + BEM */
 .p-news-card__text {
     flex-grow: 1;
     color: #666;
-    font-size: 1rem;
+    font-size: var(--news-body-size, 1rem);
     line-height: 1.9;
+}
+
+.p-news-card__copy--mobile{
+    display: none;
+}
+
+.p-news__expand-hint{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
 .p-news__controls[hidden]{
@@ -1045,6 +1062,63 @@ Footer Cat animation
         overflow-wrap: anywhere;
     }
 
+    .p-news-card{
+        min-height: 0;
+    }
+
+    .p-news-card__copy--desktop{
+        display: none;
+    }
+
+    .p-news-card__copy--mobile{
+        display: inline;
+    }
+
+    .p-news--expandable .p-news__list{
+        align-items: flex-start;
+        transition: height .35s ease-in-out;
+    }
+
+    .p-news--expandable .p-news-card{
+        position: relative;
+        padding-bottom: 40px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: height .35s ease-in-out,
+                    transform var(--transition),
+                    box-shadow var(--transition);
+    }
+
+    .p-news--expandable .p-news-card__text{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        flex-grow: 0;
+    }
+
+    .p-news--expandable .p-news-card.is-expanded .p-news-card__text{
+        display: block;
+        -webkit-line-clamp: unset;
+        overflow: visible;
+    }
+
+    .p-news--expandable .p-news-card::after{
+        content: "＋";
+        position: absolute;
+        right: 16px;
+        bottom: 12px;
+        color: var(--color-text);
+        opacity: .65;
+        font-size: 1rem;
+        line-height: 1;
+        pointer-events: none;
+    }
+
+    .p-news--expandable .p-news-card.is-expanded::after{
+        content: "−";
+    }
+
     .p-news__list.is-moving{
         scroll-snap-type: none;
     }
@@ -1248,4 +1322,11 @@ Footer Cat animation
 /* Compensate for four taller lines in the desktop's vertically centered block. */
 @media (min-width: 768px) {
     .p-hero__title { position: relative; top: .8em; }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .p-news--expandable .p-news__list,
+    .p-news--expandable .p-news-card{
+        transition: none;
+    }
 }
