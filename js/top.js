@@ -119,21 +119,29 @@ updateScrollBackground();
 //Products Scroll Animation
 
 gsap.registerPlugin(ScrollTrigger);
-const tl = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".p-products",
-        start: "top 80%",
-        end: "bottom 30%",
-        scrub: 1
-    }
-});
+// Reveal only the cards entering view, rather than scrubbing the whole grid.
+const productReveal = gsap.matchMedia();
+productReveal.add("(prefers-reduced-motion: no-preference)", (context) => {
+    const cards = gsap.utils.toArray(".p-products .p-product-card");
+    if (!cards.length) return;
 
-tl.from(".p-product-card", {
-    opacity: 0,
-    y: 80,
-    duration: 1.2,
-    ease: "power3.out",
-    stagger: 0.18
+    // Pause the card's hover transition while GSAP owns its transform.
+    gsap.set(cards, { opacity: 0, y: 10, transition: "none" });
+    ScrollTrigger.batch(cards, {
+        start: "top 90%",
+        once: true,
+        interval: 0.1,
+        onEnter: (batch) => context.add(() => {
+            gsap.to(batch, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                stagger: 0.12,
+                clearProps: "opacity,transform,transition"
+            });
+        })
+    });
 });
 
 // ------------------------------------------

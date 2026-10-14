@@ -205,6 +205,31 @@ Architecture : FLOCSS + BEM */
 03. Products
 ================================================== */
 
+.p-products{
+    padding-top: clamp(32px, 4vw, 64px);
+}
+
+.p-products .l-section-inner{
+    gap: 0;
+}
+
+.p-products .c-section-heading{
+    margin-bottom: 96px;
+}
+
+.p-products .c-section-heading__content{
+    width: 100%;
+    min-width: 0;
+}
+
+.p-products .c-section-heading__subtitle{
+    color: var(--color-white);
+}
+
+.p-products .c-section-heading__title{
+    font-size: clamp(1.5rem, 4.2vw, 2rem);
+}
+
 .p-products__grid{
     display: grid;
     grid-template-columns:
@@ -796,22 +821,44 @@ Footer Cat animation
 
     /* Products */
 
+    .p-products > .l-container{
+        width: calc(100% - 32px);
+    }
+
+    .p-products .c-section-heading{
+        margin-bottom: 78px;
+    }
+
     .p-products__grid{
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "cleansing"
-            "toner"
-            "emulsion"
-            "primer"
-            "liquid"
-            "mask"
-            "special"
-            "cushion"
-            "powder";
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas: none;
+        gap: 12px;
     }
 
     .p-product-card{
+        grid-area: auto;
+        min-width: 0;
         min-height: auto;
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .p-product-card__image{
+        flex: none;
+        aspect-ratio: 1;
+    }
+
+    .p-product-card__image img{
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .p-product-card h3{
+        font-size: clamp(.875rem, 3.6vw, 1.1rem);
+        line-height: 1.6;
+        overflow-wrap: anywhere;
     }
 
     .p-product-card--liquid,
@@ -927,7 +974,7 @@ Footer Cat animation
     .p-brand .c-section-heading { align-items: flex-start; }
     .p-special-care__text { gap: 24px; }
     .p-special-care__title { font-size: clamp(1.8rem, 6vw, 2.3rem); }
-    .p-product-card__image { min-height: 180px; }
+    .p-product-card__image { min-height: 0; }
     .p-news-card { padding: 24px; }
     .p-contact__lead { font-size: clamp(1.4rem, 6vw, 2rem); }
     .p-contact__sub { font-size: clamp(1rem, 3.5vw, 1.2rem); }
@@ -989,6 +1036,10 @@ Footer Cat animation
 }
 @media (prefers-reduced-motion: reduce) {
     .p-hero__sparkle { animation: none; opacity: .2; }
+    .p-product-card,
+    .p-product-card__image img { transition: none; }
+    .p-product-card:hover,
+    .p-product-card:hover .p-product-card__image img { transform: none; }
 }
 
 .p-top-page { overflow-x: visible; }
