@@ -1066,6 +1066,10 @@ Footer Cat animation
         min-height: 0;
     }
 
+    .p-news-card:hover{
+        transform: none;
+    }
+
     .p-news-card__copy--desktop{
         display: none;
     }
@@ -1085,7 +1089,6 @@ Footer Cat animation
         overflow: hidden;
         cursor: pointer;
         transition: height .35s ease-in-out,
-                    transform var(--transition),
                     box-shadow var(--transition);
     }
 
