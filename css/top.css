@@ -938,3 +938,18 @@ Footer Cat animation
 }
 
 .p-top-page { overflow-x: visible; }
+
+/* Hero framing: align the lead with the moon while keeping header clearance. */
+.p-hero__copy-small {
+    position: absolute;
+    top: max(calc(var(--header-height) + 24px), 16%);
+    left: 0;
+    right: 0;
+    text-align: left;
+    text-wrap: balance;
+}
+@media (max-width: 768px) {
+    .p-hero__image { object-position: 90% center; }
+    .p-hero__inner { justify-content: flex-start; text-align: left; }
+    .p-hero__copy-small { top: calc(var(--header-height) + 32px); }
+}
