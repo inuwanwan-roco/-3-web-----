@@ -18,7 +18,7 @@ https://github.com/inuwanwan-roco/-3-web-----
 
 ## 📷 Preview
 
-![トップページ](images/preview.png)
+![トップページ](image/preview.png)
 
 ## 📖 プロジェクト概要
 
