@@ -1,4 +1,4 @@
-// Native swipe and scroll snap, enhanced with keyboard and button controls.
+// Native swipe and scroll snap with visible-only, interruptible mobile autoplay.
 (() => {
     const section = document.querySelector('.p-news');
     const list = section?.querySelector('.p-news__list');
@@ -10,6 +10,7 @@
     const mobile = matchMedia('(max-width: 768px)');
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
     const position = controls.querySelector('.p-news__position');
+    const playback = controls.querySelector('.p-news__playback');
     let active = false;
     let current = 0;
     let slides = cards;
@@ -17,6 +18,32 @@
     let settleTimer = 0;
     let moving = false;
     let pointerDown = false;
+    let touching = false;
+    let autoplayTimer = 0;
+    let inView = false;
+    let paused = false;
+
+    const hasCardFocus = () => cards.some((card) => card.contains(document.activeElement));
+    const stopAutoplay = () => { clearTimeout(autoplayTimer); autoplayTimer = 0; };
+    const canAutoplay = () => active && inView && !paused && !moving && !pointerDown &&
+        !document.hidden && !reducedMotion.matches && !hasCardFocus();
+    const scheduleAutoplay = () => {
+        stopAutoplay();
+        if (canAutoplay()) {
+            autoplayTimer = setTimeout(() => {
+                autoplayTimer = 0;
+                if (canAutoplay()) moveBy(1);
+            }, 4000);
+        }
+    };
+    const updatePlayback = () => {
+        playback.disabled = reducedMotion.matches;
+        playback.textContent = reducedMotion.matches ? '自動再生なし' : paused ? '再生' : '一時停止';
+        playback.setAttribute('aria-pressed', String(paused));
+        playback.setAttribute('aria-label', reducedMotion.matches ?
+            '動きを減らす設定により自動再生は無効です' :
+            paused ? 'ニュースの自動再生を再開' : 'ニュースの自動再生を一時停止');
+    };
 
     const offset = (index) => slides[index].offsetLeft - slides[0].offsetLeft;
     const nearest = () => slides.reduce((best, card, index) =>
@@ -37,9 +64,11 @@
         }
         cancelMotion();
         updatePosition();
+        scheduleAutoplay();
     };
     const moveTo = (visualIndex) => {
         if (!active) return;
+        stopAutoplay();
         clearTimeout(settleTimer);
         cancelMotion();
         visualIndex = Math.max(0, Math.min(slides.length - 1, visualIndex));
@@ -73,6 +102,9 @@
         return copy;
     };
     const configure = () => {
+        stopAutoplay();
+        pointerDown = false;
+        touching = false;
         cancelMotion();
         clearTimeout(settleTimer);
         list.querySelectorAll('[data-news-clone]').forEach((copy) => copy.remove());
@@ -98,6 +130,10 @@
             list.scrollLeft = 0;
         }
         updatePosition();
+        updatePlayback();
+        scheduleAutoplay();
+        // The controls change section height; keep existing scroll triggers aligned.
+        window.ScrollTrigger?.refresh();
     };
 
     controls.querySelector('.p-news__previous').addEventListener('click', () => moveBy(-1));
@@ -112,7 +148,8 @@
         }
     });
     list.addEventListener('scroll', () => {
-        if (!active || moving) return;
+        if (!active || moving || Math.abs(list.scrollLeft - offset(current + 1)) < 1) return;
+        stopAutoplay();
         clearTimeout(settleTimer);
         settleTimer = setTimeout(() => {
             if (!pointerDown) finish(nearest());
@@ -120,19 +157,73 @@
     }, { passive: true });
     list.addEventListener('pointerdown', () => {
         pointerDown = true;
+        stopAutoplay();
         cancelMotion();
     }, { passive: true });
     const release = () => {
-        if (!pointerDown) return;
+        if (!pointerDown || touching) return;
         pointerDown = false;
         clearTimeout(settleTimer);
         settleTimer = setTimeout(() => finish(nearest()), 180);
     };
     window.addEventListener('pointerup', release, { passive: true });
     window.addEventListener('pointercancel', release, { passive: true });
-    list.addEventListener('wheel', cancelMotion, { passive: true });
+    // Native touch panning cancels pointer events before the finger is lifted.
+    list.addEventListener('touchstart', () => {
+        touching = true;
+        pointerDown = true;
+        stopAutoplay();
+        cancelMotion();
+    }, { passive: true });
+    const releaseTouch = (event) => {
+        if (event.touches.length) return;
+        touching = false;
+        release();
+    };
+    window.addEventListener('touchend', releaseTouch, { passive: true });
+    window.addEventListener('touchcancel', releaseTouch, { passive: true });
+    list.addEventListener('wheel', () => {
+        stopAutoplay();
+        cancelMotion();
+        clearTimeout(settleTimer);
+        settleTimer = setTimeout(() => { if (active) finish(nearest()); }, 180);
+    }, { passive: true });
+    list.addEventListener('focusin', () => {
+        if (hasCardFocus()) {
+            stopAutoplay();
+            cancelMotion();
+        }
+    });
+    list.addEventListener('focusout', () => queueMicrotask(scheduleAutoplay));
+    playback.addEventListener('click', () => {
+        paused = !paused;
+        updatePlayback();
+        if (paused && active) { cancelMotion(); finish(nearest()); }
+        else scheduleAutoplay();
+    });
+    const suspend = () => {
+        stopAutoplay();
+        if (active && moving) {
+            const index = nearest();
+            cancelMotion();
+            list.scrollTo({ left: offset(index), behavior: 'instant' });
+            finish(index);
+        }
+    };
+    const visibilityObserver = new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting && entry.intersectionRatio >= 0.1;
+        if (inView) scheduleAutoplay();
+        else suspend();
+    }, { threshold: [0, 0.1] });
+    visibilityObserver.observe(list);
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) suspend();
+        else scheduleAutoplay();
+    });
     mobile.addEventListener('change', configure);
     reducedMotion.addEventListener('change', () => {
+        stopAutoplay();
+        updatePlayback();
         if (active) { cancelMotion(); finish(nearest()); }
     });
     window.addEventListener('resize', () => {

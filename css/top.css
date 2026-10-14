@@ -637,6 +637,11 @@ Architecture : FLOCSS + BEM */
     cursor: pointer;
 }
 
+.p-news__controls button:disabled{
+    cursor: default;
+    opacity: .65;
+}
+
 .p-news__controls button:focus-visible,
 .p-news__list:focus-visible,
 .p-news-card:focus-visible{
