@@ -181,6 +181,17 @@ Architecture : FLOCSS + BEM */
     .p-brand .c-button{ margin-inline-end: 4px; }
 }
 
+/* Give the desktop subtitle room to wrap naturally without shrinking the image abruptly. */
+@media (min-width: 1280px){
+    .p-brand__content{
+        grid-template-columns: minmax(0, 1fr) minmax(0, clamp(50%, 40vw, 60%));
+    }
+
+    .p-brand__heading{
+        font-size: clamp(2.25rem, 3.3vw, 3.625rem);
+    }
+}
+
 @media (min-width: 769px) and (max-width: 1161px){
     .p-brand{ --brand-prior-tagline-lines: 2; }
 }
