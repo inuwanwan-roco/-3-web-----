@@ -553,6 +553,10 @@ Architecture : FLOCSS + BEM */
     padding: 120px 0;
 }
 
+.p-news .c-section-heading__title{
+    color: var(--color-text);
+}
+
 .p-news__list {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
