@@ -44,7 +44,7 @@ const sections = [
 ];
 
 const footer = document.querySelector(".p-footer");
-window.addEventListener("scroll", () => {
+function updateScrollBackground() {
     const y =
         window.scrollY +
         window.innerHeight * 0.5;
@@ -103,7 +103,12 @@ window.addEventListener("scroll", () => {
                 `rgb(${r}, ${g}, ${b})`;
         }
     }
-});
+    // Match the hero edge to the existing background, including the first paint.
+    mobileHero?.style.setProperty("--hero-edge-color", document.body.style.backgroundColor);
+}
+
+window.addEventListener("scroll", updateScrollBackground, { passive: true });
+updateScrollBackground();
 
 // ==========================================
 // 03. Scroll Animation
