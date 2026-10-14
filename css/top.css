@@ -178,7 +178,7 @@ Architecture : FLOCSS + BEM */
 }
 
 @media (min-width: 769px){
-    .p-brand__heading{ margin-bottom: 16px; }
+    .p-brand__heading{ margin-bottom: 40px; }
     .p-brand .c-button{ margin-inline-end: 4px; }
 }
 
