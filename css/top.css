@@ -952,3 +952,13 @@ Footer Cat animation
     .p-hero__visual { top: var(--header-height); height: calc(100% - var(--header-height)); }
     .p-hero__image { object-position: center; }
 }
+
+/* Place the mobile description in the dark space above the cat and products. */
+@media (max-width: 767px) {
+    .p-hero__title {
+        position: absolute;
+        top: max(calc(var(--header-height) + 112px), 26%);
+        left: 0;
+        max-width: 100%;
+    }
+}
