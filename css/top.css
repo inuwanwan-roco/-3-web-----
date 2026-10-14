@@ -266,18 +266,12 @@ Architecture : FLOCSS + BEM */
 
 .p-products__grid{
     display: grid;
-    grid-template-columns:
-        1.4fr
-        .9fr
-        .9fr
-        1fr
-        1.4fr;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
     grid-template-areas:
-    "cleansing toner emulsion primer liquid"
-    "cleansing mask mask primer liquid"
-    "special special special cushion cushion";
+    "cleansing toner emulsion mask mask mask"
+    "special special special primer liquid cushion";
     gap: var(--space-3);
-    /* align-items: stretch; */
 }
 
 .p-product-card{
@@ -324,7 +318,6 @@ Architecture : FLOCSS + BEM */
 
 .p-product-card--liquid{
     grid-area: liquid;
-    min-height: 520px;
 }
 
 .p-product-card--mask{
@@ -379,6 +372,12 @@ Architecture : FLOCSS + BEM */
 
 .p-product-card--special img{
     max-width: 180px;
+}
+
+@media (min-width: 1201px){
+    .p-product-card--mask img{
+        max-width: 360px;
+    }
 }
 
 .p-product-card__content{
@@ -858,6 +857,7 @@ Footer Cat animation
     .p-products__grid{
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-areas: none;
+        grid-auto-rows: auto;
         gap: 12px;
     }
 
@@ -991,7 +991,7 @@ Footer Cat animation
 .p-contact__content:hover .p-contact__lead-ja, .p-contact__content:hover .p-contact__sub-ja { transform: translateY(0); }
 .p-footer__top { gap: clamp(40px, 10vw, 224px); flex-wrap: wrap; }
 @media (min-width: 769px) and (max-width: 1200px) {
-    .p-products__grid { grid-template-columns: repeat(3, minmax(0,1fr)); grid-template-areas: "cleansing toner emulsion" "cleansing mask mask" "primer liquid cushion" "special special cushion"; }
+    .p-products__grid { grid-template-columns: repeat(3, minmax(0,1fr)); grid-auto-rows: auto; grid-template-areas: "cleansing toner emulsion" "cleansing mask mask" "primer liquid cushion" "special special cushion"; }
     .p-product-card--liquid { min-height: 320px; }
 }
 @media (max-width: 768px) {
