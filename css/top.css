@@ -115,12 +115,6 @@ Architecture : FLOCSS + BEM */
     height: 100%;
     display: block;
     object-fit: cover;
-    transition: 
-        transform var(--duration-fast) var(--ease-base);
-}
-
-.p-brand__image:hover img{
-    transform: scale(1.05);
 }
 
 /* Text*/
@@ -184,6 +178,7 @@ Architecture : FLOCSS + BEM */
 }
 
 @media (min-width: 769px){
+    .p-brand__heading{ margin-bottom: 16px; }
     .p-brand .c-button{ margin-inline-end: 4px; }
 }
 

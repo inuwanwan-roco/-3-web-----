@@ -137,10 +137,35 @@ tl.from(".p-product-card", {
 });
 
 // ------------------------------------------
+// Brand Story: reveal the content together once; keep the no-JS default visible.
+// ------------------------------------------
+
+const brandReveal = gsap.matchMedia();
+brandReveal.add("(prefers-reduced-motion: no-preference)", () => {
+    const brandContent = document.querySelector(".p-brand > .l-container");
+    if (!brandContent) return;
+
+    gsap.from(brandContent, {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        ease: "power2.out",
+        clearProps: "opacity,transform",
+        scrollTrigger: {
+            trigger: brandContent,
+            start: "top 85%",
+            once: true
+        }
+    });
+});
+
+// ------------------------------------------
 // Section Heading
 // ------------------------------------------
 
 gsap.utils.toArray(".c-section-heading").forEach((heading) => {
+    if (heading.closest(".p-brand")) return;
+
     gsap.from(heading, {
         opacity: 0,
         y: 40,
