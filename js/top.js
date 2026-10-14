@@ -119,29 +119,43 @@ updateScrollBackground();
 //Products Scroll Animation
 
 gsap.registerPlugin(ScrollTrigger);
-// Reveal only the cards entering view, rather than scrubbing the whole grid.
+// Reveal on entry and fade out when scrolling back toward the hero.
 const productReveal = gsap.matchMedia();
-productReveal.add("(prefers-reduced-motion: no-preference)", (context) => {
+productReveal.add("(prefers-reduced-motion: no-preference)", () => {
     const cards = gsap.utils.toArray(".p-products .p-product-card");
     if (!cards.length) return;
 
     // Pause the card's hover transition while GSAP owns its transform.
     gsap.set(cards, { opacity: 0, y: 10, transition: "none" });
+    const animateProducts = (batch, visible) => {
+        if (!batch.length) return;
+        gsap.killTweensOf(batch);
+        gsap.set(batch, { transition: "none" });
+        gsap.to(visible ? batch : [...batch].reverse(), {
+            opacity: visible ? 1 : 0,
+            y: visible ? 0 : 10,
+            duration: visible ? 1 : 0.6,
+            ease: visible ? "power2.out" : "power2.inOut",
+            stagger: visible ? 0.12 : 0.06,
+            clearProps: visible ? "opacity,transform,transition" : ""
+        });
+    };
+
     ScrollTrigger.batch(cards, {
-        start: "top 90%",
-        once: true,
+        start: "top 85%",
         interval: 0.1,
-        onEnter: (batch) => context.add(() => {
-            gsap.to(batch, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power2.out",
-                stagger: 0.12,
-                clearProps: "opacity,transform,transition"
-            });
-        })
+        // Ignore stale batches if the user reverses direction before the callback.
+        onEnter: (batch, triggers) => animateProducts(
+            batch.filter((card, i) => triggers[i].scroll() >= triggers[i].start), true),
+        onLeaveBack: (batch, triggers) => animateProducts(
+            batch.filter((card, i) => triggers[i].scroll() < triggers[i].start), false)
     });
+
+    // Batch callbacks run later, so clean up their active tweens on a media change.
+    return () => {
+        gsap.killTweensOf(cards);
+        gsap.set(cards, { clearProps: "opacity,transform,transition" });
+    };
 });
 
 // ------------------------------------------
