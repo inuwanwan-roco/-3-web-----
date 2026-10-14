@@ -70,7 +70,7 @@ Architecture : FLOCSS + BEM */
     color: var(--color-white);
     font-family: var(--font-title);
     font-size: clamp(2rem, 3vw, 4rem);
-    line-height: 1.4;
+    line-height: 1.8;
     text-shadow: var(--text-shadow1)
 }
 
@@ -973,4 +973,9 @@ Footer Cat animation
     background: linear-gradient(to bottom, transparent 0%, transparent 15%, var(--hero-edge-color, rgb(28, 50, 80)) 100%);
     pointer-events: none;
     z-index: 4;
+}
+
+/* Compensate for four taller lines in the desktop's vertically centered block. */
+@media (min-width: 768px) {
+    .p-hero__title { position: relative; top: .8em; }
 }
