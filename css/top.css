@@ -161,7 +161,7 @@ Architecture : FLOCSS + BEM */
 .p-brand .c-section-heading{
     align-items: center;
     /* Balance larger headings against the previous spacing to retain the PC image/text top. */
-    margin-bottom: max(24px, calc(var(--space-8) + 1.3rem * 1.8 + 2rem * 1.3 * var(--brand-prior-tagline-lines) - var(--brand-label-size) * 1.2 - var(--brand-copy-size) * 1.3));
+    margin-bottom: max(48px, calc(var(--space-8) + 1.3rem * 1.8 + 2rem * 1.3 * var(--brand-prior-tagline-lines) - var(--brand-label-size) * 1.2 - var(--brand-copy-size) * 1.3));
 }
 
 .p-brand .c-section-heading__content{
