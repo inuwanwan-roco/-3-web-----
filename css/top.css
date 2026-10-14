@@ -213,20 +213,24 @@ Architecture : FLOCSS + BEM */
     gap: 0;
 }
 
-.p-products .c-section-heading{
+.p-products .c-section-heading,
+.p-special-care .c-section-heading{
     margin-bottom: 96px;
 }
 
-.p-products .c-section-heading__content{
+.p-products .c-section-heading__content,
+.p-special-care .c-section-heading__content{
     width: 100%;
     min-width: 0;
 }
 
-.p-products .c-section-heading__subtitle{
+.p-products .c-section-heading__subtitle,
+.p-special-care .c-section-heading__subtitle{
     color: var(--color-white);
 }
 
-.p-products .c-section-heading__title{
+.p-products .c-section-heading__title,
+.p-special-care .c-section-heading__title{
     font-size: clamp(1.5rem, calc(7.8vw - 4.75px), 2rem);
 }
 
@@ -242,12 +246,14 @@ Architecture : FLOCSS + BEM */
 }
 
 @media (min-width: 769px){
-    .p-products .c-section-heading__subtitle{
+    .p-products .c-section-heading__subtitle,
+    .p-special-care .c-section-heading__subtitle{
         font-size: clamp(2.25rem, 3.2vw, 3.5rem);
         line-height: 1.2;
     }
 
-    .p-products .c-section-heading__title{
+    .p-products .c-section-heading__title,
+    .p-special-care .c-section-heading__title{
         font-size: clamp(2.25rem, 3.3vw, 3.625rem);
     }
 
@@ -407,10 +413,6 @@ Architecture : FLOCSS + BEM */
 04. Special Care
 ================================================== */
 
-.p-special-care .c-section-description{
-    color: var(--color-text-light);
-}
-
 .p-special-care .c-section-subtitle{
     color: var(--color-primary);
 }
@@ -491,12 +493,51 @@ Architecture : FLOCSS + BEM */
     display: flex;
     align-items: center;
     gap: var(--space-1);
+    width: fit-content;
+    max-width: 100%;
 }
 
 .p-special-care__features li::before{
     content:"✦";
+    flex-shrink: 0;
     color:var(--color-primary);
     margin-right:.5rem;
+}
+
+.p-special-care__feature-text{
+    position: relative;
+    min-width: 0;
+}
+
+.p-special-care__feature-text::after{
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s ease-out;
+}
+
+@media (hover: hover) and (pointer: fine){
+    .p-special-care__features li:hover .p-special-care__feature-text::after{
+        transform: scaleX(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .p-special-care__feature-text::after{
+        transition: none;
+    }
+}
+
+.p-special-care .c-button--link{
+    width: max-content;
+    min-width: 0;
+    padding-inline: 0;
+    margin-inline-start: var(--button-padding-x);
 }
 
 /* ==================================================
@@ -850,7 +891,8 @@ Footer Cat animation
         width: calc(100% - 32px);
     }
 
-    .p-products .c-section-heading{
+    .p-products .c-section-heading,
+    .p-special-care .c-section-heading{
         margin-bottom: 78px;
     }
 
@@ -899,13 +941,32 @@ Footer Cat animation
         gap: var(--space-6);
     }
 
+    .p-special-care__image img{
+        width: 88%;
+        max-width: 422.4px;
+    }
+
     .p-special-care__text{
-        max-width: 100%;
+        width: 100%;
+        max-width: 480px;
         text-align: center;
     }
 
+    .p-special-care__description,
     .p-special-care__features{
-        align-items: center;
+        width: 85%;
+        max-width: 340px;
+        margin-inline: auto;
+        text-align: left;
+    }
+
+    .p-special-care__features{
+        align-items: flex-start;
+    }
+
+    .p-special-care .c-button--link{
+        align-self: flex-end;
+        margin-inline-start: 0;
     }
 
     .p-special-care__title{
