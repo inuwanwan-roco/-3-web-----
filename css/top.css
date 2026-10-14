@@ -183,10 +183,6 @@ Architecture : FLOCSS + BEM */
     text-shadow: none;
 }
 
-.p-brand .c-section-heading__title{
-    font-size: var(--brand-copy-size);
-}
-
 @media (min-width: 769px){
     .p-brand .c-button{ margin-inline-end: 4px; }
 }
@@ -776,7 +772,9 @@ Footer Cat animation
     }
 
     .p-brand__heading{
-        font-size: clamp(1.25rem, 3vw, 1.75rem);
+        font-size: clamp(1.625rem, 7vw, 1.875rem);
+        /* Add 4px to the text stack's 16px gap before the body copy. */
+        margin-bottom: 4px;
     }
 
     .p-brand__text p{
