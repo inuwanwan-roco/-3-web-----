@@ -831,7 +831,8 @@ Architecture : FLOCSS + BEM */
 
   .p-hero__copy-small {
     margin-top: 0;
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 3.9vw, 1rem);
+    letter-spacing: 0.02em;
   }
 
   .p-hero__title {
