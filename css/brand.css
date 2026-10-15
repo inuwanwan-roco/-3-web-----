@@ -17,8 +17,32 @@
 }
 
 .p-brand-story__cover {
+  position: relative;
+  min-height: clamp(680px, 50vw, 900px);
   padding-block: calc(var(--header-height) + clamp(48px, 6vw, 96px)) 64px;
   background: var(--story-blue);
+}
+
+/* The supplied 4:3 image keeps the moon, cat and all three bottles in frame. */
+.p-brand-story__cover::before {
+  content: "";
+  position: absolute;
+  top: var(--header-height);
+  right: 0;
+  height: calc(100% - var(--header-height));
+  aspect-ratio: 4 / 3;
+  max-width: 100%;
+  background-image:
+    linear-gradient(to right, var(--story-blue), rgba(20, 41, 74, 0.8) 12%, rgba(20, 41, 74, 0) 28%),
+    url("../image/brand/brand story hero visual.webp");
+  background-size: 100% 100%, contain;
+  background-position: center, right bottom;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.p-brand-story__cover > .p-brand-story__layout {
+  position: relative;
 }
 
 .p-brand-story__layout {
@@ -159,10 +183,6 @@
   font-size: 0.875rem;
   letter-spacing: 0.08em;
   text-align: center;
-}
-
-.p-brand-story__media--cover {
-  aspect-ratio: 1;
 }
 
 .p-brand-story__media--name {
@@ -339,7 +359,19 @@
 
 @media (max-width: 768px) {
   .p-brand-story__cover {
-    padding-block: calc(var(--header-height) + 40px) 48px;
+    min-height: 0;
+    padding-block: calc(var(--header-height) + 40px) calc(100vw * 3 / 4 + 48px);
+  }
+
+  .p-brand-story__cover::before {
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    max-width: none;
+    background-image: url("../image/brand/brand story hero visual.webp");
+    background-size: contain;
+    background-position: center;
   }
 
   .p-brand-story__layout,
