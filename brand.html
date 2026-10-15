@@ -186,7 +186,7 @@
                 <div class="l-container">
                     <h2 class="p-brand-story__section-heading" id="promise-title">OUR PROMISE</h2>
                     <p class="p-brand-story__promise-intro">MI/NUITが大切にする3つの約束</p>
-                    <div class="p-brand-story__promises">
+                    <div class="p-brand-story__promises" id="promise-carousel" role="group" aria-label="MI/NUITの3つの約束">
                         <article class="p-brand-story__promise" aria-labelledby="guide-title">
                             <p class="p-brand-story__promise-label">01 • GUIDE</p>
                             <!-- GUIDE decorative icon -->
@@ -214,6 +214,12 @@
                                 手が届く価格で上質を日常に。</p>
                             <p class="p-brand-story__note">※肌質などの個人差があります。</p>
                         </article>
+                    </div>
+                    <div class="p-brand-story__promise-controls" role="group" aria-label="約束のカルーセル操作" hidden>
+                        <button type="button" class="p-brand-story__promise-previous" aria-controls="promise-carousel" aria-label="前の約束">←</button>
+                        <span class="p-brand-story__promise-position" aria-live="off">1 / 3</span>
+                        <button type="button" class="p-brand-story__promise-next" aria-controls="promise-carousel" aria-label="次の約束">→</button>
+                        <button type="button" class="p-brand-story__promise-playback" aria-controls="promise-carousel" aria-pressed="false">一時停止</button>
                     </div>
                 </div>
             </section>
@@ -261,6 +267,7 @@
             </div>
         </footer>
         <script src="js/main.js"></script>
+        <script src="js/brand.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
