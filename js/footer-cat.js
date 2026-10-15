@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("footer-cat");
     if (!container) return;
+    gsap.registerPlugin(ScrollTrigger);
     const catAnimation = lottie.loadAnimation({
         container: container,
         renderer: "svg",

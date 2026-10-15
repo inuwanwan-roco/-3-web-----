@@ -65,3 +65,13 @@ document.querySelectorAll('.l-header').forEach((siteHeader) => {
     });
     window.matchMedia('(max-width: 1100px)').addEventListener('change', () => setOpen(false));
 });
+
+// Shared footer TOP link: preserve smooth scrolling and honor reduced motion.
+document.querySelector('.p-footer__back-to-top')?.addEventListener('click', (event) => {
+    event.preventDefault();
+    document.querySelector('.l-header__logo a')?.focus({ preventScroll: true });
+    window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+    });
+});

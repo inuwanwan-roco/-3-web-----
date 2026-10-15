@@ -235,13 +235,3 @@ if (particle) {
         opacity: 1
     });
 }
-
-// Footer-only TOP link: preserve smooth scrolling and honor reduced motion.
-document.querySelector('.p-footer__back-to-top')?.addEventListener('click', (event) => {
-    event.preventDefault();
-    document.querySelector('.l-header__logo a')?.focus({ preventScroll: true });
-    window.scrollTo({
-        top: 0,
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
-    });
-});
