@@ -155,56 +155,27 @@
   margin-top: 28px;
 }
 
-/* Future img elements inherit a stable slot; replace the placeholder span only. */
+/* Intrinsic image dimensions reserve space before lazy images are decoded. */
 .p-brand-story__media {
   position: relative;
   display: grid;
   place-items: center;
   width: 100%;
-  aspect-ratio: 1.15;
   background: var(--story-placeholder);
   border: 1px solid rgba(189, 215, 235, 0.2);
-  color: #bdd7eb;
 }
 
-.p-brand-story__media > img,
-.p-brand-story__icon > img {
-  position: absolute;
-  inset: 0;
+.p-brand-story__media > img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
 }
 
-.p-brand-story__placeholder {
-  max-width: 100%;
-  padding: 16px;
-  font-family: var(--font-title);
-  font-size: 0.875rem;
-  letter-spacing: 0.08em;
-  text-align: center;
-}
-
-.p-brand-story__media--name {
+.p-brand-story__media--name,
+.p-brand-story__media--message {
   aspect-ratio: 1;
-  align-content: center;
-  gap: 32px;
   background: #dfe9ef;
   border-color: rgba(39, 68, 106, 0.18);
-  color: #27446a;
-}
-
-.p-brand-story__name-mark {
-  text-align: center;
-  font-family: var(--font-title);
-  font-size: clamp(2.5rem, 4vw, 3.75rem);
-}
-
-.p-brand-story__name-mark span {
-  display: block;
-  margin-top: 16px;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
 }
 
 .p-brand-story__scenes {
@@ -256,11 +227,13 @@
   font-size: 1.125rem;
 }
 
-.p-brand-story__media--message {
-  background: #dfe9ef;
-  border-color: rgba(39, 68, 106, 0.18);
-  color: #27446a;
-  aspect-ratio: 1;
+.p-brand-story__section--promise {
+  background-image:
+    linear-gradient(rgba(10, 23, 48, 0.2), rgba(10, 23, 48, 0.2)),
+    url("../image/brand/our-promise.webp");
+  background-size: auto, cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .p-brand-story__promise-intro {
@@ -290,16 +263,17 @@
 }
 
 .p-brand-story__icon {
-  position: relative;
   display: grid;
   place-items: center;
-  width: 64px;
+  width: min(60%, 180px);
   aspect-ratio: 1;
   margin: 28px auto;
-  border: 1px solid var(--story-gold);
-  border-radius: 50%;
-  color: var(--story-gold);
-  font-family: var(--font-title);
+}
+
+.p-brand-story__icon > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .p-brand-story__promise .p-brand-story__heading {
@@ -419,6 +393,13 @@
 
   .p-brand-story__message-ja {
     font-size: 1rem;
+  }
+
+  /* Keep the wide floral artwork intact across the tall mobile card stack. */
+  .p-brand-story__section--promise {
+    background-size: auto, 100% auto;
+    background-position: center, center top;
+    background-repeat: no-repeat, repeat-y;
   }
 
   .p-brand-story__promises {
