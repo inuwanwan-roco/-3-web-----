@@ -1175,6 +1175,11 @@ Architecture : FLOCSS + BEM */
   .p-product-card--liquid {
     min-height: 320px;
   }
+  /* Keep the previous image slot height in the three-column layout. */
+  .p-product-card--liquid img {
+    aspect-ratio: 2 / 3;
+    object-fit: contain;
+  }
 }
 @media (max-width: 768px) {
   .p-hero__inner {
