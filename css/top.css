@@ -1116,6 +1116,7 @@ Footer Cat animation
   .p-news--expandable .p-news-card__text {
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    line-clamp: 3;
     -webkit-line-clamp: 3;
     overflow: hidden;
     flex-grow: 0;
@@ -1123,6 +1124,7 @@ Footer Cat animation
 
   .p-news--expandable .p-news-card.is-expanded .p-news-card__text {
     display: block;
+    line-clamp: unset;
     -webkit-line-clamp: unset;
     overflow: visible;
   }
