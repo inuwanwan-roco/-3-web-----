@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="css/top.css">
         <title>MI/NUIT</title>
     </head>
-    <body class="p-top-page">
+    <body class="p-top-page" id="top">
         <header class="l-header l-header--steady">
             <div class="l-container">
                 <div class="l-header__inner">
@@ -46,11 +46,6 @@
                             <li class="l-header__item">
                                 <a href="special-care.html" class="l-header__link">
                                     Special Care
-                                </a>
-                            </li>
-                            <li class="l-header__item">
-                                <a href="#news" class="l-header__link">
-                                    News
                                 </a>
                             </li>
                             <li class="l-header__item">
@@ -430,8 +425,8 @@
                             </span>
                         </div>
                         <p class="p-contact__text">
-                            ブランドや商品についてのご質問は、<br>
-                            お問い合わせフォームよりお気軽にご連絡ください。
+                            <span class="p-contact__text-desktop">ブランドや商品についてのご質問は、<br>お問い合わせフォームよりお気軽にご連絡ください。</span>
+                            <span class="p-contact__text-mobile">ブランドや、商品についてのご質問は、<br>お問い合わせフォームより、<br>お気軽にご連絡ください。</span>
                         </p>
                         <div class="p-contact__button">
                             <a href="contact.html" class="c-button c-button--link">
@@ -455,6 +450,7 @@
         </main>
         <!--Footer -->
         <footer class="p-footer">
+            <a href="#top" class="p-footer__back-to-top" aria-label="ページ最上部へ戻る">↑ TOP</a>
             <div class="p-footer__top">
                 <nav class="p-footer__nav p-footer__nav--left">
                     <ul>
@@ -466,7 +462,6 @@
                 <nav class="p-footer__nav p-footer__nav--right">
                     <ul>
                         <li><a href="products.html">Products</a></li>
-                        <li><a href="#news">News</a></li>
                     </ul>
                 </nav>
             </div>
