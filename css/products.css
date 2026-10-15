@@ -540,7 +540,9 @@ Footer
     justify-content: center;
     align-items: flex-start;
     gap: var(--space-28);
-    margin-bottom: 80px;
+    margin-bottom: 0;
+    padding-block: 24px;
+    border-block: 1px dotted var(--color-text);
 }
 
 .p-footer__nav ul{
@@ -565,7 +567,6 @@ Footer
     text-align: center;
     padding-top: 60px;
     margin-top: 70px;
-    border-top: 1px dotted var(--color-text);
 }
 
 .p-footer__logo{
@@ -681,7 +682,7 @@ Footer
     .p-products-card__image { padding: 24px; max-height: 360px; }
     .p-products-card__image img { width: auto; max-width: 100%; }
     .p-footer { padding: 64px var(--container-padding) 40px; }
-    .p-footer__top { flex-direction: column; align-items: center; margin-bottom: 40px; }
-    .p-footer__nav { text-align: center; }
+    .p-footer__top { padding-block: 10px; }
+    .p-footer__nav { display: none; }
     .p-footer__brand { margin-top: 40px; padding-top: 40px; }
 }

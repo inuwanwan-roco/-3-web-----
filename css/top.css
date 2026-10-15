@@ -500,6 +500,7 @@ Architecture : FLOCSS + BEM */
 }
 
 .p-special-care__description {
+  white-space: nowrap;
   color: var(--color-text);
   font-size: 1.2rem;
   line-height: 2.1;
@@ -831,7 +832,9 @@ Architecture : FLOCSS + BEM */
   justify-content: center;
   align-items: flex-start;
   gap: var(--space-28);
-  margin-bottom: 80px;
+  margin-bottom: 0;
+  padding-block: 24px;
+  border-block: 1px dotted var(--color-border);
 }
 
 .p-footer__nav ul {
@@ -856,7 +859,6 @@ Architecture : FLOCSS + BEM */
   text-align: center;
   padding-top: 60px;
   margin-top: 70px;
-  border-top: 1px dotted var(--color-border);
 }
 
 .p-footer__logo {
@@ -906,6 +908,25 @@ Footer Cat animation
   text-align: center;
   color: var(--color-white);
   font-style: italic;
+}
+
+/* Keep the desktop TOP control larger without changing its mobile layout. */
+@media (min-width: 769px) {
+  .p-footer__back-to-top {
+    right: calc(8% + 16px);
+    min-width: 52px;
+    min-height: 52px;
+    padding-inline: 14px;
+    font-size: 1.03125rem;
+  }
+
+  .p-contact__content {
+    max-width: 800px;
+  }
+
+  .p-contact__lead-ja {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+  }
 }
 
 /* ==================================================
@@ -1082,7 +1103,8 @@ Footer Cat animation
   }
 
   .p-special-care__description {
-    font-size: 1rem;
+    width: 100%;
+    font-size: clamp(0.8125rem, calc((100vw - 40px) / 21), 1rem);
   }
 
   /* News */
@@ -1219,8 +1241,11 @@ Footer Cat animation
 
   /* Footer */
 
+  .c-end-marker {
+    gap: 1.05rem;
+  }
+
   .p-footer {
-    --footer-nav-gap: clamp(8px, 2vw, 16px);
     padding: 16px 20px 40px;
   }
 
@@ -1230,39 +1255,12 @@ Footer Cat animation
     margin-bottom: 8px;
   }
 
-  .p-footer .p-footer__top {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: var(--footer-nav-gap);
-    margin-bottom: 0;
+  .p-footer__top {
     padding-block: 10px;
-    border-block: 1px dotted var(--color-border);
   }
 
   .p-footer__nav {
-    min-width: 0;
-    text-align: center;
-  }
-
-  .p-footer__nav ul {
-    display: flex;
-    gap: var(--footer-nav-gap);
-  }
-
-  .p-footer__nav li + li {
-    margin-top: 0;
-  }
-
-  .p-footer__nav a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 44px;
-    min-height: 44px;
-    font-size: clamp(0.875rem, 3.6vw, 1rem);
-    letter-spacing: 0.02em;
-    white-space: nowrap;
+    display: none;
   }
 
   .p-footer__brand {
