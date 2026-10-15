@@ -542,7 +542,7 @@ Footer
     gap: var(--space-28);
     margin-bottom: 0;
     padding-block: 24px;
-    border-block: 1px dotted var(--color-text);
+    border-top: 1px dotted var(--color-text);
 }
 
 .p-footer__nav ul{
