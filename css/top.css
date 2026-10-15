@@ -799,11 +799,31 @@ Architecture : FLOCSS + BEM */
 07. Footer
 ================================================== */
 .p-footer {
+  position: relative;
   padding: 100px 8% 60px;
 }
 
 .p-footer__back-to-top {
-  display: none;
+  position: absolute;
+  top: 24px;
+  right: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  min-width: 44px;
+  min-height: 44px;
+  padding-inline: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  color: var(--color-white);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.p-footer__back-to-top:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 3px;
 }
 
 .p-footer__top {
@@ -1205,25 +1225,9 @@ Footer Cat animation
   }
 
   .p-footer__back-to-top {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: max-content;
-    min-width: 44px;
-    min-height: 44px;
+    position: static;
     margin-left: auto;
     margin-bottom: 8px;
-    padding-inline: 12px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-s);
-    color: var(--color-white);
-    font-size: 0.875rem;
-    text-decoration: none;
-  }
-
-  .p-footer__back-to-top:focus-visible {
-    outline: 2px solid var(--color-primary-light);
-    outline-offset: 3px;
   }
 
   .p-footer .p-footer__top {
