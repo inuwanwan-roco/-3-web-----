@@ -23,6 +23,30 @@
   background-size: 213px 249px, 337px 311px, 431px 397px, 100% 100%, 100% 100%;
 }
 
+/* Only JavaScript adds these states; content stays visible without JS or IO. */
+[data-story-reveal].is-reveal-pending {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+[data-story-reveal].is-revealed {
+  animation: story-reveal 800ms ease-out backwards;
+}
+
+@keyframes story-reveal {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-story-reveal].is-reveal-pending,
+  [data-story-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
 .p-brand-story__cover {
   position: relative;
   min-height: clamp(680px, 50vw, 900px);
@@ -428,19 +452,40 @@
 
 @media (max-width: 768px) {
   .p-brand-story__cover {
-    min-height: 0;
-    padding-block: calc(var(--header-height) + 40px) calc(100vw * 3 / 4 + 48px);
+    /* Width-based framing is independent of the browser's changing address bar. */
+    min-height: calc(var(--header-height) + 100vw * 3 / 4 + 160px);
+    padding-block: calc(var(--header-height) + 40px) clamp(96px, 20vw, 144px);
+    background: var(--story-night);
   }
 
   .p-brand-story__cover::before {
-    top: auto;
+    top: var(--header-height);
     bottom: 0;
     width: 100%;
-    height: auto;
+    height: calc(100% - var(--header-height));
+    aspect-ratio: auto;
     max-width: none;
-    background-image: url("../image/brand/brand story hero visual.webp");
-    background-size: contain;
-    background-position: center;
+    background-image:
+      linear-gradient(to bottom, var(--story-night) calc(100% - 100vw * 3 / 4), rgba(10, 23, 48, 0) calc(100% - 100vw * 3 / 4 + 48px)),
+      linear-gradient(to right, rgba(10, 23, 48, 0.78), rgba(10, 23, 48, 0.38) 58%, rgba(10, 23, 48, 0.08)),
+      url("../image/brand/brand story hero visual.webp");
+    background-size: 100% 100%, 100% 100%, 100% auto;
+    background-position: center, center, center bottom;
+    background-attachment: scroll;
+  }
+
+  .p-brand-story__cover::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: clamp(40px, 10vw, 80px);
+    background: linear-gradient(to bottom, rgba(247, 241, 230, 0), var(--story-ivory));
+    pointer-events: none;
+  }
+
+  .p-brand-story__cover > .p-brand-story__layout {
+    z-index: 1;
   }
 
   .p-brand-story__layout,
@@ -503,11 +548,14 @@
     font-size: 1rem;
   }
 
-  /* Preserve the floral background while only the card arrangement changes. */
+  /* The supplied portrait asset's actual filename contains a double dot. */
   .p-brand-story__section--promise {
-    background-size: auto, 100% auto;
-    background-position: center, center top;
-    background-repeat: no-repeat, repeat-y;
+    background-image:
+      linear-gradient(rgba(10, 23, 48, 0.2), rgba(10, 23, 48, 0.2)),
+      url("../image/brand/our-promise-sp..webp");
+    background-size: auto, cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .p-brand-story__promises {

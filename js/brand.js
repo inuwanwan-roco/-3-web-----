@@ -1,3 +1,38 @@
+// Reveal each complete reading unit once; never wait for images to load.
+(() => {
+    const targets = [...document.querySelectorAll('[data-story-reveal]')];
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    if (!targets.length || reducedMotion.matches || !('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+            if (!isIntersecting || !target.classList.contains('is-reveal-pending')) return;
+            target.classList.remove('is-reveal-pending');
+            target.classList.add('is-revealed');
+            observer.unobserve(target);
+        });
+    }, { rootMargin: '0px 0px -24px 0px', threshold: 0 });
+
+    targets.forEach((target) => {
+        target.classList.add('is-reveal-pending');
+        observer.observe(target);
+        // Keyboard navigation must never leave focus inside hidden content.
+        target.addEventListener('focusin', () => {
+            if (!target.classList.contains('is-reveal-pending')) return;
+            target.classList.remove('is-reveal-pending');
+            target.classList.add('is-revealed');
+            observer.unobserve(target);
+        }, { once: true });
+    });
+    reducedMotion.addEventListener('change', ({ matches }) => {
+        if (!matches) return;
+        observer.disconnect();
+        targets.forEach((target) => {
+            target.classList.remove('is-reveal-pending', 'is-revealed');
+        });
+    });
+})();
+
 // OUR PROMISE uses the NEWS carousel's native swipe, 4s interval and 700ms motion.
 // Keep the controller scoped here so NEWS and the shared header remain unchanged.
 (() => {
