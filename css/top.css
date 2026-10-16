@@ -472,6 +472,21 @@ Architecture : FLOCSS + BEM */
   transform: translateY(-8px) scale(1.02);
 }
 
+@media (min-width: 769px) {
+  .p-special-care__image {
+    position: relative;
+    align-self: stretch;
+  }
+
+  .p-special-care__image img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+  }
+}
+
 .p-special-care__text {
   display: flex;
   flex-direction: column;
@@ -947,8 +962,8 @@ Architecture : FLOCSS + BEM */
   }
 
   .p-special-care__image img {
-    width: 88%;
-    max-width: 422.4px;
+    width: 55%;
+    max-width: 264px;
   }
 
   .p-special-care__text {
